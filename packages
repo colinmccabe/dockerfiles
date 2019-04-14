@@ -1,0 +1,13 @@
+bind-tools
+fish
+flake8
+git
+inetutils
+jq
+mypy
+python
+python-pipenv
+time
+tree
+unzip
+zip
