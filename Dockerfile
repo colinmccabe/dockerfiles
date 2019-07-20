@@ -27,7 +27,7 @@ RUN git --git-dir=./.dotfiles.git --work-tree=. checkout
 RUN mkdir -p project
 WORKDIR project
 
+RUN pip install --user pip-tools
 RUN code-server --install-extension ms-python.python
-ENV PIPENV_VENV_IN_PROJECT true
 
 ENTRYPOINT ["code-server", "--allow-http", "--no-auth"]

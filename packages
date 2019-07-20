@@ -7,7 +7,7 @@ inetutils
 jq
 mypy
 python
-python-pipenv
+python-pip
 time
 tree
 unzip
