@@ -1,3 +1,4 @@
+base-devel
 bind-tools
 fish
 flake8
@@ -10,4 +11,5 @@ python-pipenv
 time
 tree
 unzip
+vim
 zip
