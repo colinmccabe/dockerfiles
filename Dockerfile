@@ -1,6 +1,6 @@
 FROM archlinux/base:latest
 
-ARG CODE_URL=https://github.com/cdr/code-server/releases/download/1.1119-vsc1.33.1/code-server1.1119-vsc1.33.1-linux-x64.tar.gz
+ARG CODE_URL=https://github.com/cdr/code-server/releases/download/1.1156-vsc1.33.1/code-server1.1156-vsc1.33.1-linux-x64.tar.gz
 
 COPY ./packages .
 RUN pacman -Sy --noconfirm - < packages
@@ -10,6 +10,7 @@ RUN curl -Ls $CODE_URL | bsdtar -xf - --strip-components=1 "$(basename $CODE_URL
 
 RUN useradd -m -s /usr/bin/fish dev
 USER dev
+ENV PATH="/home/dev/.local/bin:${PATH}"
 WORKDIR /home/dev
 
 RUN mkdir -p .local/share/code-server/extensions
