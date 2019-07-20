@@ -22,7 +22,7 @@ RUN cp /usr/share/fish/tools/web_config/sample_prompts/robbyrussell.fish \
   .config/fish/functions/fish_prompt.fish
 
 COPY --chown=dev:dev ./dotfiles.git .dotfiles.git
-RUN git --git-dir=./.dotfiles.git --work-tree=. checkout
+RUN git --git-dir=./.dotfiles.git --work-tree=. checkout .
 
 RUN mkdir -p project
 WORKDIR project
