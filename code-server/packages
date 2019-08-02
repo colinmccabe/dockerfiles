@@ -1,15 +1,5 @@
-base-devel
-bind-tools
-fish
 flake8
-git
 inetutils
-jq
 mypy
 python
 python-pip
-time
-tree
-unzip
-vim
-zip
