@@ -1,6 +1,8 @@
 #!/bin/sh
 
-docker run -it --rm --init --name code-server \
+docker run -it --rm --init \
+  --name code-server \
+  --cap-drop ALL --security-opt=no-new-privileges \
   -p 127.0.0.1:8443:8443 \
   --tmpfs /tmp:exec \
   --tmpfs /home/dev/.cache:uid=1000,gid=1000 \
