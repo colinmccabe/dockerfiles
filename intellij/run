@@ -1,11 +1,11 @@
 #!/bin/sh
 
-x11docker --nxagent --no-auth --user=RETAIN \
+x11docker --nxagent --clipboard --no-auth --name=intellij --user=RETAIN \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --tmpfs /tmp:exec \
-  --tmpfs /home/dev/.IntelliJIdea2019.1:exec,uid=1000,gid=1000 \
-  --mount type=bind,src="$(pwd)/$1/m2",dst=/home/dev/.m2 \
-  --mount type=bind,src="$(pwd)/$1",dst=/home/dev/project \
+  --mount type=bind,src="$(pwd)/IntelliJIdea",dst=/home/dev/.IntelliJIdea2019.2 \
+  --mount type=bind,src="$HOME/$1/m2",dst=/home/dev/.m2 \
+  --mount type=bind,src="$HOME/$1",dst=/home/dev/project \
   -- \
-  intellij-dev:latest
+  intellij:latest

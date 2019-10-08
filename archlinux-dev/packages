@@ -1,8 +1,16 @@
 base-devel
 bind-tools
 fish
+flake8
 git
+jdk11-openjdk
 jq
+maven
+mypy
+nodejs
+npm
+python
+python-pip
 time
 tree
 unzip
