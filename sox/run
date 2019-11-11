@@ -1,0 +1,6 @@
+#!/bin/sh
+
+docker run --rm --name=sox \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --mount type=bind,src="$(pwd)",dst=/home/appuser/workdir \
+  sox:latest "$@"
