@@ -1,6 +1,7 @@
 #!/bin/sh
 
-x11docker --nxagent --clipboard --no-auth --name=intellij --user=RETAIN \
+x11docker --nxagent --clipboard --no-auth --user=RETAIN \
+  --name="intellij-$(basename $1)" \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --tmpfs /tmp:exec \
