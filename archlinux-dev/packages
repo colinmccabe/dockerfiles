@@ -9,6 +9,7 @@ maven
 mypy
 nodejs
 npm
+prettier
 python
 python-pip
 time
