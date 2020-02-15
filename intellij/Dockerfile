@@ -13,7 +13,7 @@ RUN usermod -a -G wheel dev
 
 USER dev
 WORKDIR /home/dev
-ARG intellij_commit=8e796a652d389b019dca2b11a08fc6a3d7495cb9
+ARG intellij_commit=9081d66f1a314ee000f1e4c5e5366c69877a5885
 RUN git clone https://aur.archlinux.org/intellij-idea-ultimate-edition.git \
   && cd intellij-idea-ultimate-edition \
   && git checkout $intellij_commit \
