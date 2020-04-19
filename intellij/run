@@ -1,6 +1,6 @@
 #!/bin/sh
 
-x11docker --nxagent --clipboard --no-auth --user=RETAIN \
+x11docker --nxagent --clipboard --no-auth --user=RETAIN --pw=none \
   --name="$(basename $1)" \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
