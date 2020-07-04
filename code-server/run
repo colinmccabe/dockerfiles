@@ -1,11 +1,11 @@
 #!/bin/sh
 
-docker run -it --rm --init \
-  --name code-server \
+docker run --rm --init \
+  --name="$(basename $1)" \
   --cap-drop ALL --security-opt=no-new-privileges \
-  -p 127.0.0.1:8443:8443 \
+  -p 127.0.0.1:8080:8080 \
   --tmpfs /tmp:exec \
   --tmpfs /home/dev/.cache:uid=1000,gid=1000 \
   --mount type=bind,src="$(pwd)/settings.json",dst=/home/dev/.local/share/code-server/User/settings.json \
-  --mount type=bind,src="$(pwd)/$1",dst=/home/dev/project \
-  code-server-colin:latest
+  --mount type=bind,src="$HOME/$1",dst=/home/dev/project \
+  code-server --auth=none --bind-addr=0.0.0.0:8080
