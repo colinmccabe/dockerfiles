@@ -1,4 +1,4 @@
-FROM archlinux/base:latest
+FROM archlinux:latest
 
 COPY mirrorlist /etc/pacman.d/
 COPY packages .
