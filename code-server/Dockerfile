@@ -3,7 +3,7 @@ FROM archlinux-dev:latest
 USER root
 WORKDIR /
 COPY packages .
-RUN pacman -Sy --noconfirm - < packages
+RUN pacman -Sy --noconfirm --needed - < packages
 
 RUN mkdir -p /opt/code-server
 WORKDIR /opt/code-server
