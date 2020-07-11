@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 x11docker --nxagent --clipboard --no-auth --user=RETAIN --pw=none \
   --name="$(basename $1)" \
   -- \
