@@ -2,12 +2,17 @@
 
 set -eu
 
+PROJ_DIR=$1
+PORT=${2:-8080}
+
+echo "Listening on host port $PORT"
+
 docker run --rm --init \
-  --name="$(basename $1)" \
+  --name="$(basename $PROJ_DIR)" \
   --cap-drop ALL --security-opt=no-new-privileges \
-  -p 127.0.0.1:8080:8080 \
+  -p 127.0.0.1:$PORT:8080 \
   --tmpfs /tmp:exec \
   --tmpfs /home/dev/.cache:uid=1000,gid=1000 \
   --mount type=bind,src="$(pwd)/settings.json",dst=/home/dev/.local/share/code-server/User/settings.json \
-  --mount type=bind,src="$HOME/$1",dst=/home/dev/project \
+  --mount type=bind,src="$HOME/$PROJ_DIR",dst=/home/dev/project \
   code-server --auth=none --bind-addr=0.0.0.0:8080
