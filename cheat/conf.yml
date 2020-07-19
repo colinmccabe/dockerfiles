@@ -1,0 +1,12 @@
+---
+editor: vim
+colorize: true
+style: github
+formatter: terminal16m
+pager: more
+
+cheatpaths:
+  - name: personal
+    path: /home/appuser/cheatsheets
+    tags: [ personal ]
+    readonly: false
