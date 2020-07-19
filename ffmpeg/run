@@ -5,7 +5,6 @@ set -eu
 docker run --rm -it \
   --cap-drop ALL --security-opt=no-new-privileges \
   --read-only --network=none \
-  --mount type=bind,src="$(pwd)",dst=/home/appuser/workdir \
   -u 801:801 \
-  imagemagick \
-  "$@"
+  --mount type=bind,src="$(pwd)",dst=/home/appuser/workdir \
+  ffmpeg "$@"

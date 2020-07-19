@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -eu
+
+DIR="$HOME/proj/dockerfiles/units"
+HISTORY_FILE="$DIR/history"
+
+if [ ! -f "$HISTORY_FILE" ]; then
+  echo '' > "$HISTORY_FILE"
+  chmod 666 "$HISTORY_FILE"
+fi
+
+docker run --rm -it \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --read-only --network=none \
+  -u 801:801 \
+  -v "$HISTORY_FILE":/home/appuser/.units_history \
+  units "$@"
