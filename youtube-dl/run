@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm -it \
+  --cap-drop ALL --security-opt=no-new-privileges \
+  --read-only \
+  -u 801:801 \
+  --tmpfs=/home/appuser/.cache \
+  --mount type=bind,src="$(pwd)",dst=/home/appuser/workdir \
+  youtube-dl "$@"
