@@ -7,8 +7,8 @@ PORT="$1"
 echo "Listening on localhost:$PORT on host"
 echo
 
-docker run --rm --init --name=tiddlywiki \
+docker run --rm -d --init --name=tiddlywiki \
   --cap-drop=ALL --security-opt=no-new-privileges \
-  --mount type=volume,src=tiddlywiki,dst=/home/appuser/data \
+  --mount type=bind,src="$HOME/notes/tiddlywiki",dst=/home/appuser/tiddlywiki/tiddlers \
   -p "127.0.0.1:$PORT:8080" \
-  tiddlywiki:latest data --listen host=0.0.0.0
+  tiddlywiki . --listen host=0.0.0.0

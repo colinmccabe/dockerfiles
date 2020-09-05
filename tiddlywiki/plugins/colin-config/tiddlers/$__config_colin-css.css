@@ -1,0 +1,27 @@
+.tc-tiddler-body h1,
+.tc-tiddler-body h2,
+.tc-tiddler-body h3,
+.tc-tiddler-body h4,
+.tc-tiddler-body h5,
+.tc-tiddler-body h6 {
+  font-weight: 500;
+}
+
+.tc-tiddler-body h1:not(:first-child),
+.tc-tiddler-body h2:not(:first-child),
+.tc-tiddler-body h3:not(:first-child),
+.tc-tiddler-body h4:not(:first-child),
+.tc-tiddler-body h5:not(:first-child),
+.tc-tiddler-body h6:not(:first-child) {
+  margin-top: 1.5em !important;
+}
+
+.tc-tiddler-body li > p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+tc-tiddler-body. li li > p {
+  margin-top: -5px;
+  margin-bottom: 5px;
+}

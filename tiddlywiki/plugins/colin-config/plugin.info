@@ -1,0 +1,11 @@
+{
+  "title": "$:/x-plugins/colinmccabe/config",
+  "name": "Colin custom config",
+  "description": "Colin custom config",
+  "author": "Colin",
+  "version": "1.0.0",
+  "core-version": ">=5.0.0",
+  "source": "https://github.com/colinmccabe/dockerfiles",
+  "plugin-type": "plugin",
+  "list": ""
+}

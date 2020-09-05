@@ -1,0 +1,20 @@
+caption: Simple links
+dummy: yes
+tags: $:/giffmex/stroll $:/giffmex/blinks $:/giffmex/refs $:/tags/ViewTemplate
+title: $:/.giffmex/ViewTemplate/refslinks
+type: text/vnd.tiddlywiki
+
+<span class="viewtemplatebigtext">
+
+<$reveal type="nomatch" stateTitle=<<folded-state>> text="hide" tag="div" retain="yes" animate="yes">
+
+<hr>
+
+<$vars searchme=<<currentTiddler>> searchspx={{{ [<currentTiddler>escaperegexp[]]}}} >
+
+<$list filter="[!is[system]all[current]backlinks[]!tag[hide]sort[title]] -[is[current]]"><$link><$view field="title" /></$link><br></$list>
+</$vars>
+
+</$reveal>
+
+</span>

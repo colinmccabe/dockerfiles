@@ -1,0 +1,11 @@
+{
+  "title": "$:/plugins/giffmex/blink",
+  "name": "Bi-directional links",
+  "description": "Bi-directional links",
+  "author": "giffmex",
+  "version": "1.0.0",
+  "core-version": ">=5.0.0",
+  "source": "https://giffmex.org/stroll/stroll.html",
+  "plugin-type": "plugin",
+  "list": ""
+}
