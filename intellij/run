@@ -7,7 +7,8 @@ x11docker --nxagent --clipboard --no-auth --user=RETAIN --pw=none \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --tmpfs /tmp:exec \
-  --mount type=volume,src=intellij-config,dst=/home/dev/.IntelliJIdea2019.3 \
+  --tmpfs /home/dev/.cache:exec,uid=1000,gid=1000 \
+  --mount type=bind,src=$(pwd)/javaUserPrefs,dst=/home/dev/.java/.userPrefs \
   --mount type=bind,src="$HOME/$1",dst=/home/dev/project \
   --network=dev \
   -- \

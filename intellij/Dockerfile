@@ -6,27 +6,22 @@ COPY ./packages .
 RUN pacman -Sy --noconfirm --needed - < packages \
   && pacman -Scc --noconfirm
 
-RUN sed -i 's/# %wheel/%wheel/' /etc/sudoers
-RUN sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
-
-RUN usermod -a -G wheel dev
+RUN sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.zst'/" /etc/makepkg.conf
 
 USER dev
 WORKDIR /home/dev
-ARG intellij_commit=c40f24a6ca127956139adc79b09f6479d12771de
-RUN git clone https://aur.archlinux.org/intellij-idea-ultimate-edition.git \
-  && cd intellij-idea-ultimate-edition \
-  && git checkout $intellij_commit \
-  && makepkg -cirs --noconfirm \
-  && cd .. \
-  && rm -rf intellij-idea-ultimate-edition
+ARG intellij_commit=59c255b1805a689ce472a680b60f1d14c2baa8fa
+RUN git clone https://aur.archlinux.org/intellij-idea-ultimate-edition.git
+WORKDIR intellij-idea-ultimate-edition
+RUN git checkout $intellij_commit
+RUN makepkg --verifysource --noextract --noprepare --nobuild
+RUN makepkg -crs
 
 USER root
-RUN gpasswd -d dev wheel
-RUN pacman -Rsn --noconfirm sudo
+RUN pacman --noconfirm -U intellij-idea-ultimate-edition-jre-2020.2.1-1-x86_64.pkg.tar.zst
+RUN pacman --noconfirm -U intellij-idea-ultimate-edition-2020.2.1-1-any.pkg.tar.zst
 
 USER dev
-COPY --chown=dev:dev javaUserPrefs /home/dev/.java/.userPrefs
-RUN mkdir .IntelliJIdea2019.3
+WORKDIR /home/dev/project
 
 ENTRYPOINT ["intellij-idea-ultimate-edition", "/home/dev/project"]
