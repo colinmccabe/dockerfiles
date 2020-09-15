@@ -1,11 +1,13 @@
 #!/usr/bin/env fish
 
-set base_images alpine:3.12 debian:buster-slim
+argparse 'p/pull' -- $argv
+
+if [ -n "$_flag_pull" ]; set build_flags --pull; end
 
 for cmd in (cat commands)
   echo "Building $cmd"
   pushd $cmd
-  docker build -t $cmd .
+  docker build $build_flags -t $cmd .
   popd
 end
 
