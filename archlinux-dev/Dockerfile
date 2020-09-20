@@ -17,6 +17,9 @@ RUN cp /usr/share/fish/tools/web_config/sample_prompts/robbyrussell.fish \
 COPY --chown=dev:dev ./dotfiles.git .dotfiles.git
 RUN git --git-dir=./.dotfiles.git --work-tree=. checkout .
 
+RUN mkdir .m2
+COPY m2-settings.xml .m2/settings.xml
+
 RUN mkdir -p project
 WORKDIR project
 
