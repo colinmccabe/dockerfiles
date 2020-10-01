@@ -8,5 +8,3 @@ RUN apk add --no-cache ffmpeg
 USER appuser
 RUN mkdir /home/appuser/workdir
 WORKDIR /home/appuser/workdir
-
-ENTRYPOINT ["ffmpeg"]
