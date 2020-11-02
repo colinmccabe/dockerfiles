@@ -8,6 +8,7 @@ for cmd in (cat commands)
   echo "Building $cmd"
   pushd $cmd
   docker build $build_flags -t $cmd .
+  if [ $status -ne 0 ]; exit; end
   popd
 end
 
