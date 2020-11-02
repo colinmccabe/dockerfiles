@@ -10,5 +10,6 @@ x11docker --nxagent --clipboard --no-auth --user=RETAIN --pw=none \
   --tmpfs /home/dev/.cache:uid=1000,gid=1000 \
   --mount type=bind,src="$(pwd)/settings.json",dst='/home/dev/.config/Code - OSS/User/settings.json' \
   --mount type=bind,src="$HOME/$1",dst=/home/dev/project \
+  --network=dev \
   -- \
   vscode:latest
