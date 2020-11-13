@@ -16,11 +16,12 @@ end
 for line in (cat commands)
   set fields (string split ' ' $line)
   set image $fields[1]
-  if [ -n $fields[2] ]
+  if [ -n "$fields[2]" ]
     set cmd $fields[2]
+    echo "Linking $cmd to $image"
   else
     set cmd $image
+    echo "Linking $cmd"
   end
-  echo "Linking $image $cmd"
   ln -sf (pwd)/$image/run ~/bin/$cmd
 end
