@@ -1,8 +1,11 @@
 FROM archlinux:latest
 
+RUN pacman --noconfirm -Syu \
+  && pacman --noconfirm -Scc
+
 COPY mirrorlist /etc/pacman.d/
 COPY packages .
-RUN pacman -Syu --noconfirm --needed - < packages \
+RUN pacman -S --noconfirm --needed - < packages \
   && pacman -Scc --noconfirm
 
 RUN useradd -m -s /usr/bin/fish dev
