@@ -15,7 +15,7 @@ man-db
 man-pages
 maven
 mypy
-nodejs-lts-erbium
+nodejs-lts-fermium
 npm
 openbsd-netcat
 prettier
