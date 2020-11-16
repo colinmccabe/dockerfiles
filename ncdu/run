@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm -it \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --read-only --network=none \
+  -u 801:801 \
+  -v "$(pwd)":/home/appuser/workdir:ro \
+  ncdu "$@"
