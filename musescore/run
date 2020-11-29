@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+x11docker --nxagent --no-auth --user=RETAIN \
+  --name=musescore \
+  --pulseaudio=socket \
+  -- \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --network=none \
+  -u 801:801 \
+  -v "$HOME/proj/musescore":/home/appuser/Documents/MuseScore2/Scores \
+  -- \
+  musescore "$@"
