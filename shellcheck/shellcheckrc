@@ -1,0 +1,2 @@
+# Disable 'useless cat'
+disable=SC2002
