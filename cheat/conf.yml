@@ -1,7 +1,7 @@
 ---
 editor: vim
 colorize: true
-style: monokai
+style: github
 formatter: terminal16m
 pager: more
 
