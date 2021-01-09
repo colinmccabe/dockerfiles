@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -eu
+
+BUS_DEVICE=$(lsusb | grep -i yubikey | awk -F : '{print $1}')
+BUS=$(echo "$BUS_DEVICE" | awk '{print $2}')
+DEVICE=$(echo "$BUS_DEVICE" | awk '{print $4}')
+DEVFILE="/dev/bus/usb/$BUS/$DEVICE"
+
+# Uncomment when running pcscd in container
+#if [ ! -w "$DEVFILE" ]; then
+#  echo "Making device file writable with sudo"
+#  sudo setfacl -m u:1000:rw "$DEVFILE"
+#fi
+
+docker run --rm -it \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --network=none \
+  --device="$DEVFILE" \
+  -v /var/run/pcscd:/var/run/pcscd \
+  ykman "$@"
