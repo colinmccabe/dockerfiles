@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+x11docker --nxagent --no-auth --user=RETAIN \
+  --name=handbrake \
+  -- \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --network=none \
+  -u 801:801 \
+  --device=/dev/sr0 \
+  -v "$1":/home/appuser/workdir \
+  -- \
+  handbrake "$@"
