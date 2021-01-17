@@ -1,0 +1,3 @@
+library: ~/Music/library.db
+import:
+  timid: yes
