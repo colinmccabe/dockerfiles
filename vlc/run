@@ -2,13 +2,15 @@
 
 set -eu
 
-x11docker --xpra-xwayland --no-auth --user=RETAIN \
+# For hardware acceleration use
+#   --xpra-xwayland
+#   --device=/dev/dri
+x11docker --nxagent --no-auth --user=RETAIN \
   --name=vlc \
   --pulseaudio=socket \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   -v "$(pwd)":/home/appuser/workdir:ro \
-  --device=/dev/dri \
   --device=/dev/sr0 \
   -- \
   vlc "$@"
