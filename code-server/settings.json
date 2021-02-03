@@ -1,4 +1,8 @@
 {
+    "editor.minimap.enabled": false,
+    "editor.tabSize": 2,
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "/usr/bin/flake8",
     "python.linting.mypyEnabled": true,
@@ -6,6 +10,6 @@
     "python.linting.pylintEnabled": false,
     "terminal.integrated.shell.linux": "/usr/bin/fish",
     "update.mode": "none",
-    "extensions.autoCheckUpdates": false,
-    "extensions.autoUpdate": false
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.tree.indent": 20
 }
