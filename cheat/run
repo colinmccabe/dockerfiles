@@ -5,7 +5,7 @@ set -eu
 docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
-  -u 801:801 \
+  -u 1000:1000 \
   -v "$HOME/proj/dockerfiles/cheat/conf.yml":/home/appuser/.config/cheat/conf.yml:ro \
   -v "$HOME/proj/cheatsheets":/home/appuser/cheatsheets:ro \
   cheat "$@"

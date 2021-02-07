@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
-RUN groupadd -g 801 appuser
-RUN useradd -m -u 801 -g appuser appuser
+RUN groupadd -g 1000 appuser
+RUN useradd -m -u 1000 -g appuser appuser
 
 # libdvdpkg/libdvdcss for encrypted DVDs
 RUN sed -i 's/main/main contrib/g' /etc/apt/sources.list

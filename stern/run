@@ -5,6 +5,6 @@ set -eu
 docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only \
-  -u 801:801 \
+  -u 1000:1000 \
   -v $HOME/.kube:/home/appuser/.kube:ro \
   stern "$@"

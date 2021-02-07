@@ -1,7 +1,7 @@
 FROM python:3.8-alpine3.12
 
-RUN addgroup -g 801 appuser
-RUN adduser -D -u 801 -G appuser appuser
+RUN addgroup -g 1000 appuser
+RUN adduser -D -u 1000 -G appuser appuser
 ENV PATH "/home/appuser/.local/bin:${PATH}"
 
 USER appuser

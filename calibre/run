@@ -7,9 +7,9 @@ COMMAND=$(basename $0)
 docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
-  -u 801:801 \
+  -u 1000:1000 \
   --tmpfs=/tmp \
-  --tmpfs=/home/appuser/.config/calibre:uid=801,gid=801 \
+  --tmpfs=/home/appuser/.config/calibre:uid=1000,gid=1000 \
   --mount type=bind,src="$(pwd)",dst=/home/appuser/workdir \
   --entrypoint="$COMMAND" \
   calibre \

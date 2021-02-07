@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
-RUN groupadd -g 801 appuser
-RUN useradd -m -u 801 -g appuser appuser
+RUN groupadd -g 1000 appuser
+RUN useradd -m -u 1000 -g appuser appuser
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends ncdu \
