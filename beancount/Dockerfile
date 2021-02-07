@@ -1,18 +1,18 @@
-FROM alpine:3.12
+FROM debian:bullseye-slim
 
-RUN addgroup -g 1000 appuser
-RUN adduser -D -u 1000 -G appuser appuser
-ENV PATH "/home/appuser/.local/bin:${PATH}"
+RUN groupadd -g 1000 appuser
+RUN useradd -m -u 1000 -g appuser appuser
 
-RUN apk add --no-cache python3 py3-pip
-RUN apk add --no-cache beancount
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    beancount \
+    python3-fava \
+  && rm -rf /var/lib/apt/lists/*
 
 USER appuser
 
-RUN pip3 install --user --no-cache-dir fava
-
 WORKDIR /home/appuser
-RUN mkdir data
-WORKDIR data
+RUN mkdir workdir
+WORKDIR workdir
 
 ENTRYPOINT ["fava", "--host", "0.0.0.0"]
