@@ -1,0 +1,11 @@
+[Unit]
+Description=Syncthing
+Requires=docker-rootless.service
+
+[Service]
+User=colin
+EnvironmentFile=/usr/local/lib/systemd/system/machine.conf
+ExecStart=/home/colin/proj/dockerfiles/syncthing/run
+
+[Install]
+WantedBy=multi-user.target

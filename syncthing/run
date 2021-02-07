@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm \
+  --name=syncthing \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --read-only \
+  -u 1000:1000 \
+  -v syncthing:/home/appuser/.config/syncthing \
+  -v $HOME/files:/home/appuser/Sync \
+  -p 127.0.0.1:8384:8384 \
+  -p 22000:22000 \
+  syncthing --gui-address=0.0.0.0:8384 "$@"
