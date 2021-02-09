@@ -11,6 +11,7 @@ x11docker --nxagent --no-auth --user=RETAIN \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   -v "$(pwd)":/home/appuser/workdir:ro \
+  -v "$HOME/proj/dockerfiles/vlc/KEYDB.cfg":/home/appuser/.config/aacs/KEYDB.cfg:ro \
   --device=/dev/sr0 \
   -- \
   vlc "$@"

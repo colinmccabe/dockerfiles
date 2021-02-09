@@ -16,6 +16,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ca-certificates \
+    libaacs0 \
+    libbluray-bin \
     libxv1 \
     va-driver-all \
     vlc \

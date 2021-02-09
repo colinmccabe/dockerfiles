@@ -14,7 +14,10 @@ RUN DEBIAN_FRONTEND=noninteractive \
   dpkg-reconfigure libdvd-pkg
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends handbrake \
+  && apt-get install -y --no-install-recommends \
+    handbrake \
+    libaacs0 \
+    libbluray-bin \
   && rm -rf /var/lib/apt/lists/*
 
 USER appuser
