@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm -it \
+  --name=aacskeys \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --network=none --read-only \
+  -v "$(pwd)":/home/appuser/workdir \
+  "$@" \
+  aacskeys
