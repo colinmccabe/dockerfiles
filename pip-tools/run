@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -eu
+
+COMMAND=$(basename $0)
+
+docker run --rm -it \
+  --cap-drop ALL --security-opt=no-new-privileges \
+  --read-only \
+  -u 1000:1000 \
+  --tmpfs=/tmp \
+  --tmpfs=/home/appuser/.cache \
+  --mount type=bind,src="$(pwd)",dst=/home/appuser/workdir \
+  --entrypoint="$COMMAND" \
+  pip-tools \
+  "$@"
