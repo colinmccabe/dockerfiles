@@ -1,9 +1,10 @@
-FROM archlinux:latest
+FROM archlinux:base-devel-20210131.0.14634
+
+COPY mirrorlist /etc/pacman.d/
 
 RUN pacman --noconfirm -Syu \
   && pacman --noconfirm -Scc
 
-COPY mirrorlist /etc/pacman.d/
 COPY packages .
 RUN pacman -S --noconfirm --needed - < packages \
   && pacman -Scc --noconfirm
