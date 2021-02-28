@@ -2,15 +2,19 @@ FROM python:3.8-alpine3.12
 
 RUN addgroup -g 1000 appuser
 RUN adduser -D -u 1000 -G appuser appuser
-ENV PATH "/home/appuser/.local/bin:${PATH}"
 
 RUN apk add --no-cache ffmpeg
 
 USER appuser
+ENV PATH "/home/appuser/.local/bin:${PATH}"
+WORKDIR /home/appuser
 
-RUN pip3 install --user --no-cache-dir youtube_dl
+COPY requirements.txt .
+RUN pip install --user --no-cache-dir --require-hashes \
+  -r requirements.txt
+RUN rm requirements.txt
 
-RUN mkdir /home/appuser/workdir
-WORKDIR /home/appuser/workdir
+RUN mkdir workdir
+WORKDIR workdir
 
 ENTRYPOINT ["youtube-dl"]

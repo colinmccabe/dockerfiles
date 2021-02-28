@@ -24,6 +24,11 @@ RUN git --git-dir=./.dotfiles.git --work-tree=. checkout .
 RUN mkdir .m2
 COPY m2-settings.xml .m2/settings.xml
 
+COPY requirements.txt .
+RUN pip install --user --no-cache-dir --require-hashes \
+  -r requirements.txt
+RUN rm requirements.txt
+
 RUN mkdir -p project
 WORKDIR project
 

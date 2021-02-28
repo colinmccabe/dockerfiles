@@ -18,8 +18,6 @@ RUN mkdir -p .local/share/code-server/extensions
 RUN mkdir -p .local/share/code-server/User
 RUN echo '{}' > .local/share/code-server/User/settings.json
 
-RUN pip install --user pip-tools
-
 # Python extension beyond 2020.5.86806 is broken.
 # https://github.com/cdr/code-server/issues/1818
 RUN curl -LO https://github.com/microsoft/vscode-python/releases/download/2020.5.86806/ms-python-release.vsix

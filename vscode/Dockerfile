@@ -9,7 +9,6 @@ RUN pacman -Sy --noconfirm --needed - < packages \
 USER dev
 WORKDIR /home/dev
 
-RUN pip install --user pip-tools
 RUN code --install-extension ms-python.python
 
 WORKDIR project
