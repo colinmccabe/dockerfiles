@@ -8,8 +8,10 @@ for line in (cat commands)
   set image (string split ' ' $line)[1]
   echo "Building $image"
   pushd $image
-  docker build $build_flags -t $image .
-  if [ $status -ne 0 ]; exit; end
+  if [ -e Dockerfile ]
+    docker build $build_flags -t $image .
+    if [ $status -ne 0 ]; exit; end
+  end
   popd
 end
 
