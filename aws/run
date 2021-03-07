@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -eu
+
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+
+docker run --rm -i \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --read-only \
+  -u 1000:1000 \
+  -e AWS_CONFIG_FILE=/aws-config \
+  -v "$SCRIPT_DIR/config":/aws-config:ro \
+  -v "$(pwd)":/mnt \
+  -w /mnt \
+  amazon/aws-cli "$@" \
