@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -eu
+
+COMMAND=$(basename $0)
+
+docker run --rm -it \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --network=none \
+  -u 1000:1000 \
+  --device=/dev/sg1 \
+  -v "$HOME/proj/dockerfiles/vlc/KEYDB.cfg":/home/appuser/.config/aacs/KEYDB.cfg:ro \
+  -v "$(pwd)":/home/appuser/workdir \
+  --entrypoint="$COMMAND" \
+  makemkv \
+  "$@"
