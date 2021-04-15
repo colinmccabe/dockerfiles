@@ -3,8 +3,6 @@ FROM python:3.8-alpine3.12
 RUN addgroup -g 1000 appuser
 RUN adduser -D -u 1000 -G appuser appuser
 
-RUN apk add --no-cache ffmpeg
-
 USER appuser
 ENV PATH "/home/appuser/.local/bin:${PATH}"
 WORKDIR /home/appuser
