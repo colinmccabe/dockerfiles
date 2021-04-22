@@ -1,6 +1,7 @@
 [Unit]
 Description=Syncthing
 Requires=docker-rootless.service
+After=docker-rootless.service
 
 [Service]
 User=colin
