@@ -2,17 +2,24 @@
 
 set -eu
 
-PROJ_DIR=$1
-PORT=${2:-8080}
+DOCKERFILE_DIR="$HOME/proj/dockerfiles/code-server"
+CONTAINER_HOME=/home/dev
+
+PROJ_DIR=$1; shift
+PORT=$1; shift
+PROJ_NAME="$(basename $PROJ_DIR)"
 
 echo "Listening on host port $PORT"
 
 docker run --rm --init \
-  --name="$(basename $PROJ_DIR)" \
+  --name="$PROJ_NAME" \
   --cap-drop ALL --security-opt=no-new-privileges \
+  --network=dev \
   -p 127.0.0.1:$PORT:8080 \
   --tmpfs /tmp:exec \
   --tmpfs /home/dev/.cache:uid=1000,gid=1000 \
-  --mount type=bind,src="$(pwd)/settings.json",dst=/home/dev/.local/share/code-server/User/settings.json \
-  --mount type=bind,src="$HOME/$PROJ_DIR",dst=/home/dev/project \
+  -v "$DOCKERFILE_DIR/settings.json":"$CONTAINER_HOME/.local/share/code-server/User/settings.json" \
+  -v "$DOCKERFILE_DIR/fish_history":"$CONTAINER_HOME/.local/share/fish/fish_history" \
+  -v "$PROJ_DIR":/home/dev/project \
+  "$@" \
   code-server --auth=none --bind-addr=0.0.0.0:8080
