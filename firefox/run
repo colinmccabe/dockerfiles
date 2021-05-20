@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -eu
+
+x11docker --nxagent --no-auth --user=RETAIN \
+  --name=firefox \
+  --clipboard --pulseaudio=socket \
+  -- \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  -u 801:801 \
+  --tmpfs /dev/shm \
+  -v firefox_profile:/home/appuser/profile \
+  -v "$HOME/Downloads":/home/appuser/Downloads \
+  -- \
+  firefox --class firefox-container "$@"
