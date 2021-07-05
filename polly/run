@@ -22,7 +22,8 @@ _aws() {
 }
 
 startTask() {
-  TEXT_FILE=polly-$(cat /dev/urandom | tr -cd '0-9' | head -c 8).txt
+  TEXT_FILE=$(mktemp polly.XXXXXXX)
+  chmod 644 "$TEXT_FILE"
   cat - > "$TEXT_FILE"
 
   TASK=$(_aws polly start-speech-synthesis-task \
