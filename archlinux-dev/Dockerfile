@@ -1,4 +1,4 @@
-FROM archlinux:base-devel-20210131.0.14634
+FROM archlinux:base-devel-20210627.0.27153
 
 COPY mirrorlist /etc/pacman.d/
 
