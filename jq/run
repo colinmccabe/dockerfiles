@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm -i \
+  --cap-drop ALL --security-opt=no-new-privileges \
+  --read-only --network=none \
+  -u 1000:1000 \
+  jq "$@"
