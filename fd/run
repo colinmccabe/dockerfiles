@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -eu
+
+if [ -t 1 ]; then
+  SH_OPTS='-t'
+else
+  SH_OPTS=''
+fi
+
+# shellcheck disable=SC2086
+docker run --rm $SH_OPTS \
+  --cap-drop ALL --security-opt=no-new-privileges \
+  --read-only --network=none \
+  -u 1000:1000 \
+  -v "$(pwd)":/mnt:ro \
+  -w /mnt \
+  fd "$@"
