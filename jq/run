@@ -2,8 +2,11 @@
 
 set -eu
 
+if [ -t 1 ]; then COLOR_OPT='-C'; else COLOR_OPT=''; fi
+
+# shellcheck disable=SC2086
 docker run --rm -i \
   --cap-drop ALL --security-opt=no-new-privileges \
   --read-only --network=none \
   -u 1000:1000 \
-  jq "$@"
+  jq $COLOR_OPT "$@"
