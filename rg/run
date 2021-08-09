@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+if [ -t 0 ]; then IT='-it'; else IT='-i'; fi
+if [ -t 1 ]; then COLOR='always'; else COLOR='never'; fi
+
+docker run --rm "$IT" \
+  --cap-drop ALL --security-opt=no-new-privileges \
+  --read-only --network=none \
+  -u 1000:1000 \
+  -v "$(pwd)":/mnt:ro \
+  -w /mnt \
+  rg --color="$COLOR" "$@"
