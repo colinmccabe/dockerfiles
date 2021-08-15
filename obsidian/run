@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -eu
+
+x11docker --nxagent --no-auth --user=RETAIN --pw=none \
+  --name=obsidian \
+  --clipboard \
+  -- \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --network=none \
+  -v "$HOME/files/notes":/home/appuser/workdir \
+  -- \
+  obsidian:latest
