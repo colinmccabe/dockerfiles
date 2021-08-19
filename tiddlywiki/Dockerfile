@@ -1,4 +1,4 @@
-FROM node:14-buster-slim
+FROM node:14-bullseye-slim
 
 RUN groupadd -g 1000 appuser
 RUN useradd -m -u 1000 -g appuser appuser

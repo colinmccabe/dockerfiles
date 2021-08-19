@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 RUN groupadd -g 1000 appuser
 RUN useradd -m -u 1000 -g appuser appuser
