@@ -1,4 +1,7 @@
-FROM archlinux:base-devel
+FROM archlinux:base-devel-20210822.0.32033
+
+RUN echo 'Server=https://archive.archlinux.org/repos/2021/08/22/$repo/os/$arch' \
+  > /etc/pacman.d/mirrorlist
 
 RUN pacman --noconfirm -Syu \
   && pacman --noconfirm -Scc
@@ -9,7 +12,7 @@ RUN useradd -m appuser
 USER appuser
 WORKDIR /home/appuser
 
-ARG makemkv_commit=a0e78633043cf1e481693889cb62613e88d16c2b
+ARG makemkv_commit=b1cd3d1d55a47ec424063ff86c523db0921aca77
 RUN git clone https://aur.archlinux.org/makemkv-cli.git
 WORKDIR makemkv-cli
 RUN git checkout $makemkv_commit
