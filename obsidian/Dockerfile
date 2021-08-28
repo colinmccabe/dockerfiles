@@ -1,4 +1,7 @@
-FROM archlinux:base-devel
+FROM archlinux:base-devel-20210822.0.32033
+
+RUN echo 'Server=https://archive.archlinux.org/repos/2021/08/22/$repo/os/$arch' \
+  > /etc/pacman.d/mirrorlist
 
 RUN pacman --noconfirm -Syu \
   asar \
