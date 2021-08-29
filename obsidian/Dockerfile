@@ -27,7 +27,12 @@ USER root
 RUN pacman --noconfirm -U *.tar.zst
 
 USER appuser
-RUN mkdir /home/appuser/workdir
-WORKDIR /home/appuser/workdir
+WORKDIR /home/appuser
+
+RUN mkdir -p .config/obsidian
+COPY obsidian.json .config/obsidian/
+
+RUN mkdir workdir
+WORKDIR workdir
 
 ENTRYPOINT ["obsidian"]
