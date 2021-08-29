@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Obsidian
+Exec=/home/colin/proj/dockerfiles/obsidian/run
+Icon=obsidian
+StartupWMClass=obsidian
+Type=Application
