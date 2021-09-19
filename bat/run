@@ -1,13 +1,21 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-set -eu
+set -euo pipefail
 
-if [ -t 1 ]; then COLOR='always'; else COLOR='never'; fi
+if [[ -t 0 && -t 1 ]]; then
+  IT='-it'
+  COLOR='always'
+else
+  IT='-i'
+  COLOR='never'
+fi
 
-docker run --rm -i \
+PAGING="$COLOR"
+
+docker run --rm "$IT" \
   --cap-drop ALL --security-opt=no-new-privileges \
   --read-only --network=none \
   -u 1000:1000 \
   -v "$(pwd)":/mnt:ro \
   -w /mnt \
-  bat --color="$COLOR" "$@"
+  bat --color="$COLOR" --paging="$PAGING" "$@"
