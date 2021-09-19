@@ -2,6 +2,10 @@
 
 set -eu
 
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+
+$SCRIPT_DIR/xdg-open-server &
+
 x11docker --nxagent --no-auth --user=RETAIN --pw=none \
   --name=obsidian \
   --clipboard \
@@ -9,5 +13,6 @@ x11docker --nxagent --no-auth --user=RETAIN --pw=none \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --network=none \
   -v "$HOME/files/notes":/home/appuser/workdir \
+  -v "/tmp/xdg-open-fifo":/home/appuser/xdg-open-fifo \
   -- \
   obsidian:latest

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+FIFO=/tmp/xdg-open-fifo
+
+cleanup() {
+  trap - SIGINT SIGTERM ERR EXIT
+  rm -f "$FIFO"
+}
+
+if [ $(pgrep -cf '[x]dg-open-server') -gt 1 ]; then
+  exit 0
+fi
+
+trap cleanup SIGINT SIGTERM ERR EXIT
+
+if [ ! -e "$FIFO" ]; then
+  mkfifo "$FIFO"
+  chmod 777 "$FIFO"
+fi
+
+while true; do
+  URL=$(cat "$FIFO")
+  echo "Opening $URL"
+  xdg-open "$URL"
+done

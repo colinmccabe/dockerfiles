@@ -26,6 +26,8 @@ RUN makepkg -c
 USER root
 RUN pacman --noconfirm -U *.tar.zst
 
+COPY xdg-open-client /usr/local/bin/xdg-open
+
 USER appuser
 WORKDIR /home/appuser
 
