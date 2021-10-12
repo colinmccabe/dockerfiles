@@ -3,12 +3,13 @@ FROM archlinux:base-devel-20210822.0.32033
 RUN echo 'Server=https://archive.archlinux.org/repos/2021/08/22/$repo/os/$arch' \
   > /etc/pacman.d/mirrorlist
 
-RUN pacman --noconfirm -Syu \
-  asar \
-  electron \
-  fuse \
-  git \
-  hicolor-icon-theme
+RUN pacman -Syu --noconfirm \
+    asar \
+    electron \
+    fuse \
+    git \
+    hicolor-icon-theme \
+  && pacman -Scc --noconfirm
 
 RUN sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.zst'/" /etc/makepkg.conf
 
@@ -24,7 +25,7 @@ RUN makepkg --verifysource --noextract --noprepare --nobuild
 RUN makepkg -c
 
 USER root
-RUN pacman --noconfirm -U *.tar.zst
+RUN pacman -U --noconfirm *.tar.zst
 
 COPY xdg-open-client /usr/local/bin/xdg-open
 
