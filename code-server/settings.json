@@ -11,5 +11,15 @@
     "terminal.integrated.shell.linux": "/usr/bin/fish",
     "update.mode": "none",
     "workbench.colorTheme": "Default Dark+",
-    "workbench.tree.indent": 20
+    "workbench.tree.indent": 20,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        },
+        {
+            "viewType": "jupyter-notebook",
+            "filenamePattern": "*.ipynb"
+        }
+    ]
 }
