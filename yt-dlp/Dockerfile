@@ -1,9 +1,12 @@
-FROM python:3.8-alpine3.13
+FROM python:3.9-slim-bullseye
 
-RUN addgroup -g 1000 appuser
-RUN adduser -D -u 1000 -G appuser appuser
+RUN groupadd -g 1000 appuser
+RUN useradd -m -u 1000 -g appuser appuser
 
-RUN apk add --no-cache ffmpeg
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    ffmpeg \
+  && rm -rf /var/lib/apt/lists/*
 
 USER appuser
 ENV PATH "/home/appuser/.local/bin:${PATH}"
@@ -17,4 +20,4 @@ RUN rm requirements.txt
 RUN mkdir workdir
 WORKDIR workdir
 
-ENTRYPOINT ["youtube-dl"]
+ENTRYPOINT ["yt-dlp"]

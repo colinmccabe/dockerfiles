@@ -7,5 +7,5 @@ docker run --rm -it \
   --read-only \
   -u 1000:1000 \
   --tmpfs=/home/appuser/.cache \
-  --mount type=bind,src="$(pwd)",dst=/home/appuser/workdir \
-  youtube-dl "$@"
+  -v "$HOME/apps/yt-dlp":/home/appuser/workdir \
+  yt-dlp "$@"
