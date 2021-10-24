@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=VLC (container)
+Exec=/home/colin/proj/dockerfiles/vlc/run
+Icon=vlc
+StartupWMClass=vlc
+Type=Application
