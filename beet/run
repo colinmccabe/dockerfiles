@@ -9,5 +9,5 @@ docker run --rm -it \
   -v beets:/home/appuser/.config/beets \
   -v "$HOME/proj/dockerfiles/beet/config.yaml":/home/appuser/.config/beets/config.yaml:ro \
   -v "$HOME/Music":/home/appuser/Music \
-  -v "$(pwd)":/home/appuser/workdir:ro \
+  -v "$HOME/apps/beet":/home/appuser/workdir:ro \
   beet "$@"

@@ -10,7 +10,7 @@ docker run --rm -it \
   -u 1000:1000 \
   --tmpfs=/tmp \
   --tmpfs=/home/appuser/.config/calibre:uid=1000,gid=1000 \
-  --mount type=bind,src="$(pwd)",dst=/home/appuser/workdir \
+  -v "$HOME/apps/calibre":/home/appuser/workdir \
   --entrypoint="$COMMAND" \
   calibre \
   "$@"
