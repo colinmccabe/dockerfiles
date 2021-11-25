@@ -1,12 +1,9 @@
-FROM archlinux:base-devel-20210627.0.27153
+FROM archlinux:base-devel-20211121.0.39613
 
 COPY mirrorlist /etc/pacman.d/
 
-RUN pacman --noconfirm -Syu \
-  && pacman --noconfirm -Scc
-
 COPY packages .
-RUN pacman -S --noconfirm --needed - < packages \
+RUN pacman -Sy --noconfirm --needed - < packages \
   && pacman -Scc --noconfirm
 
 RUN useradd -m -s /usr/bin/fish dev
@@ -15,8 +12,7 @@ ENV PATH="/home/dev/.local/bin:${PATH}"
 WORKDIR /home/dev
 
 RUN mkdir -p .config/fish/functions
-RUN cp /usr/share/fish/tools/web_config/sample_prompts/robbyrussell.fish \
-  .config/fish/functions/fish_prompt.fish
+COPY robbyrussell.fish .config/fish/functions/fish_prompt.fish
 
 COPY --chown=dev:dev ./dotfiles.git .dotfiles.git
 RUN git --git-dir=./.dotfiles.git --work-tree=. checkout .
