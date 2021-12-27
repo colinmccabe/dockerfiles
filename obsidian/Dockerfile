@@ -3,7 +3,7 @@ FROM archlinux:base-devel-20211121.0.39613
 RUN echo 'Server=https://archive.archlinux.org/repos/2021/11/21/$repo/os/$arch' \
   > /etc/pacman.d/mirrorlist
 
-RUN pacman -Syu --noconfirm \
+RUN pacman -Sy --noconfirm \
     asar \
     electron13 \
     fuse \
