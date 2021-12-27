@@ -1,5 +1,4 @@
 #!/bin/sh
-
 set -eu
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
@@ -12,6 +11,7 @@ x11docker --nxagent --no-auth --user=RETAIN --pw=none \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --network=none \
+  --security-opt seccomp="$SCRIPT_DIR/../seccomp-electron.json" \
   -v "$HOME/files/notes":/home/appuser/workdir \
   -v "/tmp/xdg-open-fifo":/home/appuser/xdg-open-fifo \
   -- \

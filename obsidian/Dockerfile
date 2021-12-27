@@ -1,11 +1,11 @@
-FROM archlinux:base-devel-20210822.0.32033
+FROM archlinux:base-devel-20211121.0.39613
 
-RUN echo 'Server=https://archive.archlinux.org/repos/2021/08/22/$repo/os/$arch' \
+RUN echo 'Server=https://archive.archlinux.org/repos/2021/11/21/$repo/os/$arch' \
   > /etc/pacman.d/mirrorlist
 
 RUN pacman -Syu --noconfirm \
     asar \
-    electron \
+    electron13 \
     fuse \
     git \
     hicolor-icon-theme \
@@ -17,7 +17,7 @@ RUN useradd -m appuser
 USER appuser
 WORKDIR /home/appuser
 
-ARG commit=64121a9ac534c55cfbf701b9c42385244da5aa81
+ARG commit=ce79f2ada933b1e91d0ef7a32515408d8b1a08a1
 RUN git clone https://aur.archlinux.org/obsidian.git
 WORKDIR obsidian
 RUN git checkout $commit
