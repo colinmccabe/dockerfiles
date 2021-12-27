@@ -52,18 +52,9 @@
 	"syscalls": [
 		{
 			"names": [
-				"arch_prctl",
 				"chroot",
 				"clone",
-				"fanotify_init",
-				"name_to_handle_at",
-				"open_by_handle_at",
-				"setdomainname",
-				"sethostname",
-				"setns",
-				"syslog",
 				"unshare",
-				"vhangup",
 
 				"accept",
 				"accept4",
