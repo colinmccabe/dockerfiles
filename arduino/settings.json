@@ -1,0 +1,14 @@
+{
+    "arduino.useArduinoCli": true,
+    "arduino.path": "/usr/sbin/",
+    "arduino.commandPath": "arduino-cli",
+    "arduino.enableUSBDetection": true,
+    "editor.minimap.enabled": false,
+    "editor.tabSize": 2,
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "update.mode": "none",
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.tree.indent": 20
+}
