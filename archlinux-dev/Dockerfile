@@ -17,14 +17,6 @@ COPY robbyrussell.fish .config/fish/functions/fish_prompt.fish
 COPY --chown=dev:dev ./dotfiles.git .dotfiles.git
 RUN git --git-dir=./.dotfiles.git --work-tree=. checkout .
 
-RUN mkdir .m2
-COPY m2-settings.xml .m2/settings.xml
-
-COPY requirements.txt .
-RUN pip install --user --no-cache-dir --require-hashes \
-  -r requirements.txt
-RUN rm requirements.txt
-
 RUN mkdir -p project
 WORKDIR project
 

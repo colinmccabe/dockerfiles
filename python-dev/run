@@ -22,4 +22,4 @@ docker run --rm --init \
   -v "$SCRIPT_DIR/fish_history":"$CONTAINER_HOME/.local/share/fish/fish_history" \
   -v "$PROJ_DIR":/home/dev/project \
   "$@" \
-  code-server --auth=none --bind-addr=0.0.0.0:8080
+  python-dev --auth=none --bind-addr=0.0.0.0:8080
