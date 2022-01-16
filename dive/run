@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm -it \
+  --cap-drop ALL --security-opt=no-new-privileges \
+  --read-only --network=none \
+  -u 1396:1396 \
+  -v "$(pwd)":/mnt:ro \
+  -w /mnt \
+  dive "$@"
