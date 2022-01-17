@@ -1,6 +1,6 @@
-FROM archlinux:base-devel-20211121.0.39613
+FROM archlinux:base-devel-20220109.0.43549
 
-RUN echo 'Server=https://archive.archlinux.org/repos/2021/11/21/$repo/os/$arch' \
+RUN echo 'Server=https://archive.archlinux.org/repos/2022/01/09/$repo/os/$arch' \
   > /etc/pacman.d/mirrorlist
 
 RUN pacman -Sy --noconfirm \
@@ -10,8 +10,6 @@ RUN pacman -Sy --noconfirm \
     git \
     hicolor-icon-theme \
   && pacman -Scc --noconfirm
-
-RUN sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.zst'/" /etc/makepkg.conf
 
 RUN useradd -m appuser
 USER appuser

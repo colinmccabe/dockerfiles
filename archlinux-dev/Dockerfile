@@ -1,6 +1,7 @@
-FROM archlinux:base-devel-20211121.0.39613
+FROM archlinux:base-devel-20220109.0.43549
 
-COPY mirrorlist /etc/pacman.d/
+RUN echo 'Server=https://archive.archlinux.org/repos/2022/01/09/$repo/os/$arch' \
+  > /etc/pacman.d/mirrorlist
 
 COPY packages .
 RUN pacman -Sy --noconfirm --needed - < packages \
