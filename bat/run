@@ -2,20 +2,27 @@
 
 set -euo pipefail
 
-if [[ -t 0 && -t 1 ]]; then
-  IT='-it'
-  COLOR='always'
+if [[ -t 0 ]]; then
+  T='-t'
 else
-  IT='-i'
-  COLOR='never'
+  T=''
 fi
 
-PAGING="$COLOR"
+if [[ -t 1 ]]; then
+  COLOR=always
+  STYLE=full
+  PAGING=auto
+else
+  COLOR=never
+  STYLE=plain
+  PAGING=never
+fi
 
-docker run --rm "$IT" \
+# shellcheck disable=SC2086
+docker run --rm -i $T \
   --cap-drop ALL --security-opt=no-new-privileges \
   --read-only --network=none \
   -u 1000:1000 \
   -v "$(pwd)":/mnt:ro \
   -w /mnt \
-  bat --color="$COLOR" --paging="$PAGING" "$@"
+  bat --color="$COLOR" --paging="$PAGING" --style="$STYLE" "$@"
