@@ -2,14 +2,18 @@
 
 argparse 'p/pull' -- $argv
 
-if [ -n "$_flag_pull" ]; set build_flags --pull; end
+if [ -n "$_flag_pull" ]
+  for image in (cat pull)
+    docker pull $image
+  end
+end
 
-for line in (cat commands)
+for line in (cat images commands)
   set image (string split ' ' $line)[1]
   echo "Building $image"
   pushd $image
   if [ -e Dockerfile ]
-    docker build $build_flags -t $image .
+    docker build -t $image .
     if [ $status -ne 0 ]; exit; end
   end
   popd
