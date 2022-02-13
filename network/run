@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm -it \
+  --cap-drop ALL --security-opt=no-new-privileges \
+  --read-only \
+  -u 1265:1265 \
+  network "$@"
