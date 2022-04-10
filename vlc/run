@@ -2,13 +2,12 @@
 
 set -eu
 
-x11docker --hostdisplay --backend=podman --user=RETAIN \
+x11docker --user=RETAIN \
   --name=vlc \
   --pulseaudio=socket \
-  --gpu \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
-  -u 1000:1000 --userns=keep-id \
+  -u 1000:1000 \
   -v "$HOME/Videos":/home/appuser/Videos:ro \
   -- \
-  localhost/vlc "$@"
+  vlc "$@"

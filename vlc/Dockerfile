@@ -6,8 +6,6 @@ RUN useradd -m -u 1000 -g appuser appuser
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ca-certificates \
-    libxv1 \
-    va-driver-all \
     vlc \
   && rm -rf /var/lib/apt/lists/*
 
