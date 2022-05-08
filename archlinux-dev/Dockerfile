@@ -1,6 +1,6 @@
-FROM archlinux:base-devel-20220403.0.51871
+FROM archlinux:base-devel-20220501.0.54834
 
-RUN echo 'Server=https://archive.archlinux.org/repos/2022/04/03/$repo/os/$arch' \
+RUN echo 'Server=https://archive.archlinux.org/repos/2022/05/01/$repo/os/$arch' \
   > /etc/pacman.d/mirrorlist
 
 COPY packages .
