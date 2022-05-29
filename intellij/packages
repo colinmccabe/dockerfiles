@@ -1,3 +1,6 @@
 fontconfig
+jdk17-openjdk
+libdbusmenu-glib
 libxrender
+libxtst
 ttf-dejavu

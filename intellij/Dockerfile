@@ -10,18 +10,18 @@ RUN sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.zst'/" /etc/makepkg.conf
 
 USER dev
 WORKDIR /home/dev
-ARG intellij_commit=59c255b1805a689ce472a680b60f1d14c2baa8fa
-RUN git clone https://aur.archlinux.org/intellij-idea-ultimate-edition.git
-WORKDIR intellij-idea-ultimate-edition
+ARG intellij_commit=9c3a51022526c7bb0a795ecf9ea34683056674be
+ARG intellij_repo=https://aur.archlinux.org/intellij-idea-community-edition-jre.git
+RUN git clone $intellij_repo intellij
+WORKDIR intellij
 RUN git checkout $intellij_commit
 RUN makepkg --verifysource --noextract --noprepare --nobuild
 RUN makepkg -crs
 
 USER root
-RUN pacman --noconfirm -U intellij-idea-ultimate-edition-jre-2020.2.1-1-x86_64.pkg.tar.zst
-RUN pacman --noconfirm -U intellij-idea-ultimate-edition-2020.2.1-1-any.pkg.tar.zst
+RUN pacman --noconfirm -U *.pkg.tar.zst
 
 USER dev
 WORKDIR /home/dev/project
 
-ENTRYPOINT ["intellij-idea-ultimate-edition", "/home/dev/project"]
+ENTRYPOINT ["idea-ce", "/home/dev/project"]
