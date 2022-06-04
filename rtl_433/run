@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+trap cleanup SIGINT SIGTERM ERR EXIT
+
+cleanup() {
+  trap - SIGINT SIGTERM ERR EXIT
+  docker stop -t 5 rtl_433
+}
+
+docker run --rm -it \
+  --name=rtl_433 \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --network=none \
+  -u 16980:16980 \
+  --device="$(readlink -f /dev/RTLSDR)" \
+  rtl_433 "$@"
