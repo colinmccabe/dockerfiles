@@ -2,11 +2,13 @@
 
 set -eu
 
-if [ -t 1 ]; then COLOR_OPT='-C'; else COLOR_OPT=''; fi
+if [ -t 1 ]; then COLOR='-C'; else COLOR='-M'; fi
 
 # shellcheck disable=SC2086
 docker run --rm -i \
   --cap-drop ALL --security-opt=no-new-privileges \
   --read-only --network=none \
-  -u 1000:1000 \
-  jq $COLOR_OPT "$@"
+  -u 8956:8956 \
+  -v "$(pwd)":/mnt:ro \
+  -w /mnt \
+  jq "$COLOR" "$@"
