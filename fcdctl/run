@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm -it \
+  --name=fcdctl \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --read-only --network=none \
+  -u 3879:3879 \
+  --device="$(readlink -f /dev/FCD)" \
+  fcdctl "$@"
