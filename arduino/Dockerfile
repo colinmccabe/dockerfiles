@@ -1,4 +1,4 @@
-FROM vscode:latest
+FROM c-dev:latest
 
 USER root
 WORKDIR /
@@ -15,10 +15,10 @@ ENV ESP_INDEX=package_esp32_index.json
 COPY "$ESP_INDEX" ./
 RUN arduino-cli \
   --additional-urls "file:///home/dev/$ESP_INDEX" \
-  core download arduino:avr esp32:esp32
+  core download arduino:avr
 RUN arduino-cli \
   --additional-urls "file:///home/dev/$ESP_INDEX" \
-  core install arduino:avr esp32:esp32
+  core install arduino:avr
 
 ENV EXT_BASE_URL=https://marketplace.visualstudio.com/_apis/public/gallery/publishers
 
