@@ -1,10 +1,7 @@
-FROM archlinux:base-devel-20220501.0.54834
-
-RUN echo 'Server=https://archive.archlinux.org/repos/2022/05/01/$repo/os/$arch' \
-  > /etc/pacman.d/mirrorlist
+FROM archlinux-colin
 
 COPY packages .
-RUN pacman -Sy --noconfirm --needed - < packages \
+RUN pacman -S --noconfirm --needed - < packages \
   && pacman -Scc --noconfirm
 
 RUN useradd -m -s /usr/bin/fish dev

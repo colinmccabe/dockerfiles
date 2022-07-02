@@ -1,7 +1,7 @@
 FROM c-dev:latest
 
 USER root
-RUN pacman -Syu --noconfirm \
+RUN pacman -S --noconfirm \
     avr-libc \
     avr-gcc \
     avrdude \

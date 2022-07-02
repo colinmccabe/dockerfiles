@@ -2,7 +2,7 @@ FROM code-server:latest
 
 USER root
 WORKDIR /
-RUN pacman -Syu --noconfirm \
+RUN pacman -S --noconfirm \
     flake8 \
     mypy \
     python \

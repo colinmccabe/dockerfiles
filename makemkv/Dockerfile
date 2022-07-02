@@ -1,10 +1,5 @@
-FROM archlinux:base-devel-20220501.0.54834
+FROM archlinux-colin
 
-RUN echo 'Server=https://archive.archlinux.org/repos/2022/05/01/$repo/os/$arch' \
-  > /etc/pacman.d/mirrorlist
-
-RUN pacman --noconfirm -Syu \
-  && pacman --noconfirm -Scc
 RUN pacman --noconfirm -S git ffmpeg jre11-openjdk \
   && pacman --noconfirm -Scc
 

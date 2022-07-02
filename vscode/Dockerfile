@@ -1,7 +1,7 @@
 FROM archlinux-dev:latest
 
 USER root
-RUN pacman -Sy --noconfirm --needed \
+RUN pacman -S --noconfirm --needed \
     code \
     ttf-dejavu \
   && pacman -Scc --noconfirm

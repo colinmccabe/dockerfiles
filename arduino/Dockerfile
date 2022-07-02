@@ -2,7 +2,7 @@ FROM c-dev:latest
 
 USER root
 WORKDIR /
-RUN pacman -Syu --noconfirm \
+RUN pacman -S --noconfirm \
     arduino-builder \
     arduino-cli \
     python-pyserial \

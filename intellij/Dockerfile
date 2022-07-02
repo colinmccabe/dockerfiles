@@ -3,7 +3,7 @@ FROM archlinux-dev:latest
 USER root
 WORKDIR /
 COPY ./packages .
-RUN pacman -Sy --noconfirm --needed - < packages \
+RUN pacman -S --noconfirm --needed - < packages \
   && pacman -Scc --noconfirm
 
 RUN sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.zst'/" /etc/makepkg.conf
