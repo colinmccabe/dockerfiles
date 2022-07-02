@@ -1,3 +1,4 @@
+*.vsix
 dotfiles.git/
 /commands
 /images
