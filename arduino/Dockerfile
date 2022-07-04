@@ -11,6 +11,16 @@ RUN pacman -S --noconfirm \
 USER dev
 WORKDIR /home/dev
 
+ENV EXT_VER=0.4.12
+ENV EXT_HASH=235a13f7257218d786f731e5f460189364d93c713a6d9c6ece39ffdf3ada3344
+ENV EXT_VENDOR=vsciot-vscode
+ENV EXT_NAME=vscode-arduino
+RUN curl -L --compressed -o ext.vsix \
+    "$EXT_BASE_URL/$EXT_VENDOR/vsextensions/$EXT_NAME/$EXT_VER/vspackage" &&\
+  echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
+  code --install-extension ext.vsix &&\
+  rm ext.vsix
+
 ENV ESP_INDEX=package_esp32_index.json
 COPY "$ESP_INDEX" ./
 RUN arduino-cli \

@@ -9,6 +9,8 @@ RUN pacman -S --noconfirm --needed \
 USER dev
 WORKDIR /home/dev
 
+ENV EXT_BASE_URL=https://marketplace.visualstudio.com/_apis/public/gallery/publishers
+
 RUN mkdir -p '.config/Code - OSS/User'
 
 WORKDIR project

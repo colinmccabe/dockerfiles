@@ -15,6 +15,8 @@ ENV PATH "/opt/code-server/bin:${PATH}"
 USER dev
 WORKDIR /home/dev
 
+ENV EXT_BASE_URL=https://marketplace.visualstudio.com/_apis/public/gallery/publishers
+
 RUN mkdir -p .local/share/code-server/extensions
 RUN mkdir -p .local/share/code-server/User
 RUN echo '{}' > .local/share/code-server/User/settings.json

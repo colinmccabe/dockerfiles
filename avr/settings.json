@@ -1,1 +1,6 @@
-{}
+{
+    "C_Cpp.default.includePath": [
+        "/usr/avr/include/**",
+        "${workspaceFolder}/**",
+    ]
+}

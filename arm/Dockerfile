@@ -15,12 +15,11 @@ ENV EXT_VER=1.5.1
 ENV EXT_HASH=9f8ab9fa1fe64eddf7bffd5180525c366704a175c3533a573376734395ef02ae
 ENV EXT_VENDOR=marus25
 ENV EXT_NAME=cortex-debug
-ENV EXT_BASE_URL=https://marketplace.visualstudio.com/_apis/public/gallery/publishers
 RUN curl -L --compressed -o ext.vsix \
-    "$EXT_BASE_URL/$EXT_VENDOR/vsextensions/$EXT_NAME/$EXT_VER/vspackage" \
-  && echo "$EXT_HASH  ext.vsix" | sha256sum -c - \
-  && code --install-extension ext.vsix \
-  && rm ext.vsix
+    "$EXT_BASE_URL/$EXT_VENDOR/vsextensions/$EXT_NAME/$EXT_VER/vspackage" &&\
+  echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
+  code --install-extension ext.vsix &&\
+  rm ext.vsix
 
 WORKDIR /home/dev/project
 
