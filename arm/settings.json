@@ -1,3 +1,11 @@
 {
-    "cortex-debug.gdbPath": "/usr/sbin/arm-none-eabi-gdb"
+    "cortex-debug.gdbPath": "/usr/sbin/arm-none-eabi-gdb",
+    "C_Cpp.default.compilerPath": "/usr/sbin/arm-none-eabi-gcc",
+    "C_Cpp.default.cStandard": "gnu17",
+    "C_Cpp.default.cppStandard": "gnu++17",
+    "C_Cpp.default.intelliSenseMode": "gcc-arm",
+    "C_Cpp.default.includePath": [
+        "/usr/arm-none-eabi/include/**",
+        "${workspaceFolder}/**"
+    ],
 }
