@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm -it \
+  --name=lpc21isp \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --read-only --network=none \
+  -u 1000:1000 \
+  --device=/dev/ttyUSB0 \
+  -v "$(pwd)":/mnt:ro \
+  -w /mnt \
+  lpc21isp "$@"
