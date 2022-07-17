@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+
+if [ -c /dev/FX2LA ]; then
+  FX2LA=--device="$(readlink -f /dev/FX2LA)"
+else
+  FX2LA=
+fi
+
+# shellcheck disable=SC2086
+x11docker --nxagent --user=RETAIN \
+  --name=sigrok \
+  -- \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --network=none \
+  -u 1000:1000 \
+  $FX2LA \
+  -v "$HOME/apps/sigrok":/home/appuser/workdir \
+  -e QT_QUICK_BACKEND=software \
+  -- \
+  sigrok:latest
