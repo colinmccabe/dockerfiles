@@ -1,12 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-set -Eeuo pipefail
-trap cleanup SIGINT SIGTERM ERR EXIT
-
-cleanup() {
-  trap - SIGINT SIGTERM ERR EXIT
-  docker stop -t 5 rtl_433
-}
+set -eu
 
 docker run --rm -it \
   --name=rtl_433 \
