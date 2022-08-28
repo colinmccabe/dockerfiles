@@ -2,20 +2,19 @@ FROM code-server:latest
 
 USER root
 WORKDIR /
-RUN pacman -S --noconfirm \
+RUN pacman -S --noconfirm --needed \
     flake8 \
     mypy \
     python \
     python-pip \
+    python-poetry \
   && pacman -Scc --noconfirm
 
 USER dev
 WORKDIR /home/dev
 
-COPY requirements.txt .
-RUN pip install --user --no-cache-dir --require-hashes \
-    -r requirements.txt \
-  && rm requirements.txt
+RUN mkdir -p .config/pypoetry
+COPY ./poetry.toml .config/pypoetry/config.toml
 
 ENV EXT_VER=2022.4.1
 ENV EXT_HASH=66d00fd62fb4ad39be8d915c8be361c773f1fd1a4bf21558cf5b02101af7ccc3

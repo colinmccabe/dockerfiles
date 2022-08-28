@@ -17,7 +17,7 @@ docker run --rm --init \
   --network=dev \
   -p 127.0.0.1:$PORT:8080 \
   --tmpfs /tmp:exec \
-  --tmpfs /home/dev/.cache:uid=1000,gid=1000 \
+  --tmpfs /home/dev/.cache:exec,uid=1000,gid=1000 \
   -v "$SCRIPT_DIR/settings.json":"$CONTAINER_HOME/.local/share/code-server/User/settings.json" \
   -v "$SCRIPT_DIR/fish_history":"$CONTAINER_HOME/.local/share/fish/fish_history" \
   -v "$PROJ_DIR":/home/dev/project \
