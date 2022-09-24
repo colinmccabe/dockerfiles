@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+docker run --rm \
+  --name=logisim \
+  --security-opt=no-new-privileges \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=America/New_York \
+  -p 127.0.0.1:8080:8080 \
+  -p 127.0.0.1:8081:8081 \
+  -v $HOME/apps/logisim:/config \
+  logisim-evolution:latest
