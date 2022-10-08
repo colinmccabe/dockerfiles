@@ -5,7 +5,7 @@ SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
 $SCRIPT_DIR/xdg-open-server &
 
-x11docker --nxagent --no-auth --user=RETAIN --pw=none \
+x11docker --nxagent --user=RETAIN \
   --name=obsidian \
   --clipboard \
   -- \

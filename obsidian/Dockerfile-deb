@@ -1,0 +1,33 @@
+FROM debian:bullseye-slim
+
+RUN groupadd -g 1000 appuser
+RUN useradd -m -u 1000 -g appuser appuser
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+  && rm -rf /var/lib/apt/lists/*
+
+ENV PKG_VER=0.15.9
+ENV PKG_HASH=599cec74c1af51f9e8056b206c376332b052bb15aee17cd3dbdac827acd6071f
+ENV PKG_URL=https://github.com/obsidianmd/obsidian-releases/releases/download/v$PKG_VER/obsidian_${PKG_VER}_amd64.deb
+RUN curl -L -o obsidian.deb $PKG_URL &&\
+  echo "$PKG_HASH  obsidian.deb" | sha256sum -c - &&\
+  apt-get update &&\
+  apt-get install -y libasound2 libgbm1 &&\
+  apt-get install -y ./obsidian.deb &&\
+  rm obsidian.deb &&\
+  rm -rf /var/lib/apt/lists/*
+
+COPY xdg-open-client /usr/local/bin/xdg-open
+
+USER appuser
+WORKDIR /home/appuser
+
+RUN mkdir -p .config/obsidian
+COPY obsidian.json .config/obsidian/
+
+RUN mkdir workdir
+WORKDIR workdir
+
+ENTRYPOINT ["obsidian"]
