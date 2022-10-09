@@ -14,7 +14,6 @@ USER appuser
 WORKDIR /home/appuser
 
 RUN mkdir -p .config/obsidian
-COPY obsidian.json .config/obsidian/
 
 RUN mkdir workdir
 WORKDIR workdir

@@ -12,6 +12,7 @@ x11docker --nxagent --user=RETAIN \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --network=none \
   --security-opt seccomp="$SCRIPT_DIR/../seccomp-electron.json" \
+  -v obsidian_config:/home/appuser/.config/obsidian \
   -v "$HOME/files/notes":/home/appuser/workdir \
   -v "/tmp/xdg-open-fifo":/home/appuser/xdg-open-fifo \
   -- \
