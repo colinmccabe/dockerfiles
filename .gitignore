@@ -1,5 +1,7 @@
-*.vsix
-dotfiles.git/
 /commands
 /images
 /pull
+
+*.vsix
+dotfiles.git/
+fish_history
