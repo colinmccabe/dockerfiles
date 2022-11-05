@@ -1,4 +1,4 @@
-FROM python:3.9-slim-bullseye
+FROM python:3.10-slim-bullseye
 
 RUN groupadd -g 1944 appuser
 RUN useradd -m -u 1944 -g appuser appuser
@@ -18,4 +18,4 @@ USER appuser
 WORKDIR /home/appuser
 RUN mkdir .homeassistant
 
-ENTRYPOINT ["hass", "--runner"]
+ENTRYPOINT ["hass"]

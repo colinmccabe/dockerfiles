@@ -1,13 +1,11 @@
-FROM python:3.9-slim-bullseye
+FROM python:3.10-slim-bullseye
 
-RUN groupadd -g 1000 appuser
-RUN useradd -m -u 1000 -g appuser appuser
-
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
   && rm -rf /var/lib/apt/lists/*
 
+RUN groupadd -g 1000 appuser
+RUN useradd -m -u 1000 -g appuser appuser
 USER appuser
 ENV PATH "/home/appuser/.local/bin:${PATH}"
 WORKDIR /home/appuser

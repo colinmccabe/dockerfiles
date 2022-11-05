@@ -1,9 +1,11 @@
-FROM python:3.7-alpine3.16
+FROM python:3.10-slim-bullseye
 
-RUN addgroup -g 1000 appuser
-RUN adduser -D -u 1000 -G appuser appuser
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+  && rm -rf /var/lib/apt/lists/*
 
-RUN apk add --no-cache ffmpeg
+RUN groupadd -g 1000 appuser
+RUN useradd -m -u 1000 -g appuser appuser
 
 USER appuser
 ENV PATH "/home/appuser/.local/bin:${PATH}"
