@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -eu
+
+docker run --rm -i \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --read-only --network=none \
+  -u 3360:3360 \
+  jc "$@"
