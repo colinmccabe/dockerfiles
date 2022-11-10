@@ -2,9 +2,15 @@
 
 set -eu
 
-COMMAND=$(basename $0)
+COMMAND=$(basename "$0")
 
-docker run --rm -it \
+if [ -t 0 ]; then
+  IT='-it'
+else
+  IT='-i'
+fi
+
+docker run --rm "$IT" \
   --cap-drop ALL --security-opt=no-new-privileges \
   --read-only --network=none \
   -u 1000:1000 \
