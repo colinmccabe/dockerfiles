@@ -26,6 +26,20 @@ USER root
 RUN pacman --noconfirm -U $PKG_NAME.tar.zst
 USER dev
 
+ENV PKG_NAME=stm32g0-headers-git
+ENV PKG_URL=https://aur.archlinux.org/$PKG_NAME.git
+ENV PKG_COMMIT=2300686f5560e22cccf4c658a7fb4eba3cc85ebf
+RUN git clone $PKG_URL $PKG_NAME &&\
+  cd $PKG_NAME &&\
+  git checkout $PKG_COMMIT &&\
+  makepkg -crs &&\
+  mv *.tar.zst ../$PKG_NAME.tar.zst &&\
+  cd .. &&\
+  rm -rf $PKG_NAME
+USER root
+RUN pacman --noconfirm -U $PKG_NAME.tar.zst
+USER dev
+
 ENV EXT_VER=1.5.1
 ENV EXT_HASH=9f8ab9fa1fe64eddf7bffd5180525c366704a175c3533a573376734395ef02ae
 ENV EXT_VENDOR=marus25
