@@ -8,4 +8,6 @@
         "/usr/arm-none-eabi/include/**",
         "${workspaceFolder}/**"
     ],
+    "workbench.colorTheme": "Default Dark+",
+    "editor.minimap.enabled": false,
 }

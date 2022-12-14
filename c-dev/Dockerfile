@@ -1,4 +1,4 @@
-FROM vscode:latest
+FROM code-server:latest
 
 WORKDIR /home/dev
 
@@ -8,10 +8,10 @@ ENV EXT_VENDOR=ms-vscode
 ENV EXT_NAME=cpptools
 RUN curl -L --compressed -o ext.vsix \
     "$EXT_BASE_URL/$EXT_VENDOR/vsextensions/$EXT_NAME/$EXT_VER/vspackage?targetPlatform=linux-x64" &&\
-  echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
-  code --install-extension ext.vsix &&\
+  echo "$EXT_HASH  ext.vsix" | sha256sum -c -
+RUN code-server --install-extension ext.vsix &&\
   rm ext.vsix
 
 WORKDIR project
 
-ENTRYPOINT ["code", "-w", "."]
+ENTRYPOINT ["code-server", "."]

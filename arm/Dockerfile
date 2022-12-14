@@ -33,9 +33,9 @@ ENV EXT_NAME=cortex-debug
 RUN curl -L --compressed -o ext.vsix \
     "$EXT_BASE_URL/$EXT_VENDOR/vsextensions/$EXT_NAME/$EXT_VER/vspackage" &&\
   echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
-  code --install-extension ext.vsix &&\
+  code-server --install-extension ext.vsix &&\
   rm ext.vsix
 
 WORKDIR project
 
-ENTRYPOINT ["code", "-w", "."]
+ENTRYPOINT ["code-server", "."]
