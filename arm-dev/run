@@ -27,5 +27,5 @@ docker run --rm --init \
   -v "$SCRIPT_DIR/settings.json":"$CONTAINER_HOME/.local/share/code-server/User/settings.json" \
   -v "$SCRIPT_DIR/fish_history":"$CONTAINER_HOME/.local/share/fish/fish_history" \
   -v "$PROJ_DIR":/home/dev/project \
-  arm \
+  arm-dev \
   code-server --auth=none --bind-addr=0.0.0.0:8080
