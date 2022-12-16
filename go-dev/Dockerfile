@@ -3,6 +3,7 @@ FROM code-server:latest
 USER root
 WORKDIR /
 RUN pacman -S --noconfirm --needed \
+    delve \
     go \
     gopls \
   && pacman -Scc --noconfirm
