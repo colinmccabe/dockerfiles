@@ -2,7 +2,7 @@
 
 set -eu
 
-if [ -t 0 ]; then IT='-it'; else IT='-i'; fi
+if [ -t 0 ] && [ -t 1 ]; then IT='-it'; else IT='-i'; fi
 if [ -t 1 ]; then COLOR='always'; else COLOR='never'; fi
 
 docker run --rm "$IT" \
