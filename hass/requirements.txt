@@ -101,7 +101,6 @@ async-timeout==4.0.2 \
     #   aiodiscover
     #   aiohttp
     #   bleak
-    #   dbus-fast
     #   homeassistant
 atomicwrites-homeassistant==1.4.1 \
     --hash=sha256:01457de800961db7d5b575f3c92e7fb56e435d88512c366afb0873f4f092bb0d \
@@ -142,9 +141,9 @@ bleak==0.19.1 \
     --hash=sha256:5bf2c87ef370fcd80ebe75be361ef7b9655660c2e2baf957fab0f3a42c82ec7f \
     --hash=sha256:dff7c7f281dcb6629d0d722209c79ec3aa2a6c33867cb5c1ea3d44b72ca155c0
     # via home-assistant-bluetooth
-certifi==2022.9.24 \
-    --hash=sha256:0d9c601124e5a6ba9712dbc60d9c53c21e34f5f641fe83002317394311bdce14 \
-    --hash=sha256:90c1a32f1d68f940488354e36370f6cca89f0f106db09518524c88d6ed83f382
+certifi==2022.12.7 \
+    --hash=sha256:35824b4c3a97115964b408844d64aa14db1cc518f6562e8d7261699d1350a9e3 \
+    --hash=sha256:4ad3232f5e926d6718ec31cfc1fcadfde020920e278684144551c91769c7bc18
     # via
     #   homeassistant
     #   httpcore
