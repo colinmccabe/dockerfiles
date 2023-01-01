@@ -2,12 +2,11 @@
 
 set -eu
 
-x11docker --nxagent --no-auth --user=RETAIN \
+x11docker --xc=no --xpra --user=RETAIN \
   --name=kicad \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
-  --network=none \
   -u 1000:1000 \
   -v "$1":/home/appuser/workdir \
   -- \
-  kicad "$@"
+  kicad
