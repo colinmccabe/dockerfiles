@@ -5,8 +5,8 @@ set -eu
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 CONTAINER_HOME=/home/dev
 
-PROJ_DIR=$1; shift
 PORT=$1; shift
+PROJ_DIR=$1; shift
 PROJ_NAME="$(basename $PROJ_DIR)"
 
 echo "Listening on host port $PORT"
