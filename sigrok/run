@@ -12,7 +12,6 @@ x11docker --nxagent --user=RETAIN \
   --name=sigrok \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
-  --network=none \
   -u 1000:1000 \
   $FX2LA \
   -v "$HOME/apps/sigrok":/home/appuser/workdir \

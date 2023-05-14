@@ -6,7 +6,6 @@ x11docker --nxagent --no-auth --user=RETAIN \
   --name=wireshark \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
-  --network=none \
   -u 1000:1000 \
   -v "$HOME/proj/dockerfiles/wireshark/capture.fifo":/home/appuser/workdir/capture.fifo \
   -- \
