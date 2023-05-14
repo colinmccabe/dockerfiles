@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye
+FROM python:3.11-slim-bullseye
 
 ARG UID=3360
 RUN groupadd -g $UID appuser

@@ -1,4 +1,4 @@
-FROM python:3.10-alpine3.16
+FROM python:3.11-alpine3.16
 
 RUN addgroup -g 1000 appuser
 RUN adduser -D -u 1000 -G appuser appuser
