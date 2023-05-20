@@ -15,7 +15,7 @@ ARG EXT_VENDOR=denoland
 ARG EXT_NAME=vscode-deno
 #RUN curl -L --compressed -o ext.vsix \
 #    "$EXT_BASE_URL/$EXT_VENDOR/vsextensions/$EXT_NAME/$EXT_VER/vspackage" &&\
-COPY denoland.vscode-deno-3.17.0.vsix ext.vsix
+COPY $EXT_VENDOR.$EXT_NAME-$EXT_VER.vsix ext.vsix
 RUN echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
   code-server --install-extension ext.vsix &&\
   rm ext.vsix
