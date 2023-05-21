@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+PROJ_DIR=$1; shift
+
+docker run --rm \
+  --name=jupyter \
+  --cap-drop ALL --security-opt=no-new-privileges \
+  -u 1000:100 \
+  -p 127.0.0.1:8888:8888 \
+  -v "$PROJ_DIR":/home/jovyan/work \
+  jupyter \
+  start-notebook.sh --NotebookApp.token=
