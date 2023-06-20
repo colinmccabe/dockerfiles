@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bullseye
+FROM python:3.11-slim-bookworm
 
 RUN groupadd -g 1000 appuser
 RUN useradd -m -u 1000 -g appuser appuser

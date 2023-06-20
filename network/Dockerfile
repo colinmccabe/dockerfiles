@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 RUN groupadd -g 1265 appuser
 RUN useradd -m -u 1265 -g appuser appuser
