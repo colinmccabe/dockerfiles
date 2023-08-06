@@ -15,4 +15,4 @@ docker run --rm -it \
   --read-only --network=none \
   -u 1000:1000 \
   -v "$HISTORY_FILE":/home/appuser/.units_history \
-  units --terse "$@"
+  units "$@"
