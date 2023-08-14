@@ -1,7 +1,7 @@
-FROM python:3.11-alpine3.16
+FROM python:3.11-slim-bookworm
 
-RUN addgroup -g 1000 appuser
-RUN adduser -D -u 1000 -G appuser appuser
+RUN groupadd -g 1000 appuser
+RUN useradd -m -u 1000 -g appuser appuser
 
 COPY requirements.txt .
 RUN chown -R appuser:appuser /usr/local &&\
