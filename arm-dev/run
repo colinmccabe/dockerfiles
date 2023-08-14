@@ -10,7 +10,9 @@ PROJ_NAME="$(basename $PROJ_DIR)"
 CONTAINER_HOME=/home/dev
 
 if [ -c /dev/STLINK ]; then
-  STLINK=--device="$(readlink -f /dev/STLINK)"
+  STLINK_DEV=$(readlink -f /dev/STLINK)
+  echo "Found /dev/STLINK at $STLINK_DEV"
+  STLINK=--device=$STLINK_DEV
 else
   STLINK=
 fi

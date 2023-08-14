@@ -8,11 +8,11 @@
     "python.linting.flake8Args": [
       "--config", "/home/dev/.config/flake8"
     ],
-    "python.linting.mypyEnabled": true,
     "python.linting.mypyPath": "/usr/bin/mypy",
     "python.linting.pylintEnabled": false,
     "terminal.integrated.defaultProfile.linux": "fish",
     "update.mode": "none",
-    "workbench.colorTheme": "Default Dark+",
-    "workbench.tree.indent": 20
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.tree.indent": 20,
+    "python.linting.mypyEnabled": true
 }

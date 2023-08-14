@@ -40,13 +40,14 @@ USER root
 RUN pacman --noconfirm -U $PKG_NAME.tar.zst
 USER dev
 
-ENV EXT_VER=1.5.1
-ENV EXT_HASH=9f8ab9fa1fe64eddf7bffd5180525c366704a175c3533a573376734395ef02ae
+ENV EXT_VER=1.12.0
+ENV EXT_HASH=a231852f0751574321ac4fad2d107b761e3d05144c8b7004428c1e245793ebe1
 ENV EXT_VENDOR=marus25
 ENV EXT_NAME=cortex-debug
-RUN curl -L --compressed -o ext.vsix \
-    "$EXT_BASE_URL/$EXT_VENDOR/vsextensions/$EXT_NAME/$EXT_VER/vspackage" &&\
-  echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
+#RUN curl -L --compressed -o ext.vsix \
+#    "$EXT_BASE_URL/$EXT_VENDOR/vsextensions/$EXT_NAME/$EXT_VER/vspackage" &&\
+COPY $EXT_VENDOR.$EXT_NAME-$EXT_VER.vsix ext.vsix
+RUN echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
   code-server --install-extension ext.vsix &&\
   rm ext.vsix
 
