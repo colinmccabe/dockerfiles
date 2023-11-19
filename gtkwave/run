@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -eu
+
+x11docker --xc=yes --xpra --user=RETAIN \
+  --name=gtkwave \
+  -- \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  -u 1000:1000 \
+  -v "$1":/home/appuser/workdir:ro \
+  -- \
+  gtkwave
