@@ -7,6 +7,6 @@ pager: more
 
 cheatpaths:
   - name: personal
-    path: /home/appuser/cheatsheets
+    path: /mnt
     tags: [ personal ]
     readonly: false

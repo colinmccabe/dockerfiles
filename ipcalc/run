@@ -1,9 +1,17 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
-set -eu
+USER_ID=$(( 10000 + RANDOM % 10000 ))
+
+HISTORY_FILE="$HOME/proj/dockerfiles/units/history"
+
+if [ ! -f "$HISTORY_FILE" ]; then
+  echo '' > "$HISTORY_FILE"
+  chmod 666 "$HISTORY_FILE"
+fi
 
 docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
-  -u 1000:1000 \
+  -u $USER_ID:$USER_ID \
   ipcalc "$@"

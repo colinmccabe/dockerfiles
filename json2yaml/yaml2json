@@ -2,4 +2,6 @@
 
 import json, sys, yaml
 
-json.dump(yaml.safe_load(sys.stdin), sys.stdout, indent=2)
+json.dump(yaml.load(sys.stdin, Loader=yaml.Loader),
+          sys.stdout,
+          indent=2)

@@ -1,17 +1,12 @@
 FROM alpine:3.18
 
-RUN addgroup -g 1000 appuser
-RUN adduser -D -u 1000 -G appuser appuser
-
 WORKDIR /usr/local/bin
-RUN wget https://github.com/cheat/cheat/releases/download/4.2.0/cheat-linux-amd64.gz \
-  && echo '25d64ac3565c6976d3bb8508fb2a3434d7f7a696762735d3103e5bf039338338  cheat-linux-amd64.gz' > SHA256SUMS \
-  && sha256sum -c SHA256SUMS \
-  && gunzip -c cheat-linux-amd64.gz > cheat \
-  && chmod +x cheat
-
-USER appuser
-RUN mkdir /home/appuser/cheatsheets
-WORKDIR /home/appuser/cheatsheets
+ARG CHEAT_VER=4.2.0
+ARG CHEAT_HASH=25d64ac3565c6976d3bb8508fb2a3434d7f7a696762735d3103e5bf039338338
+ARG CHEAT_URL=https://github.com/cheat/cheat/releases/download/$CHEAT_VER/cheat-linux-amd64.gz
+RUN wget $CHEAT_URL &&\
+  echo "$CHEAT_HASH  cheat-linux-amd64.gz" | sha256sum -c - &&\
+  gunzip -c cheat-linux-amd64.gz > cheat &&\
+  chmod +x cheat
 
 ENTRYPOINT ["cheat"]

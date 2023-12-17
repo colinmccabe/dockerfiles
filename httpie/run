@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
+
+USER_ID=$(( 10000 + RANDOM % 10000 ))
 
 COMMAND=$(basename $0)
 
@@ -19,6 +20,6 @@ fi
 docker run --rm "$IT" \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only \
-  -u 4837:4837 \
+  -u $USER_ID:$USER_ID \
   --entrypoint=$COMMAND \
   httpie --pretty "$PRETTY" "$@"

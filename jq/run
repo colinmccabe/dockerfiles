@@ -1,14 +1,15 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
-set -eu
+USER_ID=$(( 10000 + RANDOM % 10000 ))
 
 if [ -t 1 ]; then COLOR='-C'; else COLOR='-M'; fi
 
 # shellcheck disable=SC2086
 docker run --rm -i \
-  --cap-drop ALL --security-opt=no-new-privileges \
+  --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
-  -u 8956:8956 \
+  -u $USER_ID:$USER_ID \
   -v "$(pwd)":/mnt:ro \
   -w /mnt \
   jq "$COLOR" "$@"

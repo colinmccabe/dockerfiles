@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
-set -eu
+USER_ID=$(( 10000 + RANDOM % 10000 ))
 
 docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
-  -u 1000:1000 \
-  -v "$(pwd)":/home/appuser/workdir:ro \
+  -u $USER_ID:$USER_ID \
+  -v "$(pwd)":/mnt:ro \
+  -w /mnt \
   ncdu "$@"

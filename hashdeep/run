@@ -1,11 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
-set -eu
+USER_ID=$(( 10000 + RANDOM % 10000 ))
 
 docker run --rm -i \
-  --cap-drop ALL --security-opt=no-new-privileges \
+  --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
-  -u 4650:4650 \
+  -u $USER_ID:$USER_ID \
   -v "$(pwd)":/mnt:ro \
   -w /mnt \
   hashdeep "$@"

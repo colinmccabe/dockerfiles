@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
+
+USER_ID=$(( 10000 + RANDOM % 10000 ))
 
 if [[ -t 0 ]]; then
   T='-t'
@@ -20,9 +21,9 @@ fi
 
 # shellcheck disable=SC2086
 docker run --rm -i $T \
-  --cap-drop ALL --security-opt=no-new-privileges \
+  --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
-  -u 1000:1000 \
+  -u $USER_ID:$USER_ID \
   -v "$(pwd)":/mnt:ro \
   -w /mnt \
   bat --color="$COLOR" --paging="$PAGING" --style="$STYLE" "$@"
