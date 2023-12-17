@@ -26,4 +26,4 @@ x11docker --nxagent --clipboard --user=RETAIN \
   -v "$1":/home/dev/project \
   --network=dev \
   -- \
-  avr:latest
+  avr-dev:latest
