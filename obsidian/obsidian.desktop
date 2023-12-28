@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=Obsidian
-Exec=/home/colin/proj/dockerfiles/obsidian/run
+Exec=env DOCKER_HOST=unix:///run/user/1000/docker.sock /home/colin/proj/dockerfiles/obsidian/run
 Icon=obsidian
-StartupNotify=true
 StartupWMClass=obsidian
 Type=Application
