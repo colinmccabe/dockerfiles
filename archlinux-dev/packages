@@ -10,7 +10,7 @@ jq
 lsof
 man-db
 man-pages
-nodejs-lts-hydrogen
+nodejs-lts-iron
 npm
 openbsd-netcat
 prettier
