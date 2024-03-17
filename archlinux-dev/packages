@@ -10,10 +10,7 @@ jq
 lsof
 man-db
 man-pages
-nodejs-lts-iron
-npm
 openbsd-netcat
-prettier
 python
 time
 tree
