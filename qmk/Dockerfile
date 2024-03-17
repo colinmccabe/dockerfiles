@@ -1,15 +1,13 @@
-FROM python:3.9-slim-bookworm
+FROM python:3.11-slim-bookworm
 
-RUN apt-get update &&\
-  apt-get install -y --no-install-recommends \
-    avr-libc \
-    avrdude \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    git \
+    gcc-arm-none-eabi \
+    binutils-arm-none-eabi \
     dfu-programmer \
     dfu-util \
-    gcc-avr \
-    git &&\
-  rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g 1000 appuser
 RUN useradd -m -u 1000 -g appuser appuser
