@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bookworm
+FROM python:3.12-slim-bookworm
 
 RUN groupadd -g 13472 appuser
 RUN useradd -m -u 13472 -g appuser appuser
