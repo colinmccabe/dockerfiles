@@ -1,27 +1,30 @@
 FROM archlinux-dev:latest
 
 USER root
-WORKDIR /
-COPY ./packages .
-RUN pacman -S --noconfirm --needed - < packages \
+RUN pacman -S --noconfirm --needed \
+    fontconfig \
+    jdk21-openjdk \
+    libxrender \
+    libxtst \
+    maven \
+    ttf-dejavu \
   && pacman -Scc --noconfirm
 
-RUN sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.zst'/" /etc/makepkg.conf
+ARG INTELLIJ_TAR=ideaIC-2024.1.tar.gz
+ARG INTELLIJ_HASH=01d1b224c5e88592f954b17796a76fa8391cdcafef27264e703c7ffe47bb4065
+WORKDIR /opt
+COPY $INTELLIJ_TAR idea.tar.gz
+RUN echo "$INTELLIJ_HASH  idea.tar.gz" \
+  | sha256sum -c -
+RUN mkdir idea
+RUN tar -xf idea.tar.gz --strip-components=1 -C idea
 
 USER dev
 WORKDIR /home/dev
-ARG intellij_commit=9c3a51022526c7bb0a795ecf9ea34683056674be
-ARG intellij_repo=https://aur.archlinux.org/intellij-idea-community-edition-jre.git
-RUN git clone $intellij_repo intellij
-WORKDIR intellij
-RUN git checkout $intellij_commit
-RUN makepkg --verifysource --noextract --noprepare --nobuild
-RUN makepkg -crs
 
-USER root
-RUN pacman --noconfirm -U *.pkg.tar.zst
+RUN mkdir -p .cache/JetBrains
+RUN mkdir -p .config/JetBrains
 
-USER dev
-WORKDIR /home/dev/project
+WORKDIR project
 
-ENTRYPOINT ["idea-ce", "/home/dev/project"]
+ENTRYPOINT ["/opt/idea/bin/idea.sh", "/home/dev/project"]
