@@ -4,15 +4,22 @@ set -eu
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
-x11docker --nxagent --clipboard --user=RETAIN \
-  --name="$(basename $1)" \
-  -- \
-  --cap-drop=ALL --security-opt=no-new-privileges \
-  --security-opt seccomp="$SCRIPT_DIR/../seccomp-electron.json" \
-  --tmpfs /tmp:exec \
-  --tmpfs /home/dev/.cache:uid=1000,gid=1000 \
-  -v "$(pwd)/settings.json":'/home/dev/.config/Code - OSS/User/settings.json' \
-  -v "$1":/home/dev/project \
+PORT=$1; shift
+PROJ_DIR=$1; shift
+PROJ_NAME="$(basename $PROJ_DIR)"
+CONTAINER_HOME=/home/dev
+
+echo "Listening on host port $PORT"
+
+docker run --rm --init \
+  --name="$PROJ_NAME" \
+  --cap-drop ALL --security-opt=no-new-privileges \
   --network=dev \
-  -- \
-  c-dev:latest
+  -p 127.0.0.1:$PORT:8080 \
+  --tmpfs /tmp:exec \
+  --tmpfs /home/dev/.cache:exec,uid=1000,gid=1000 \
+  -v "$SCRIPT_DIR/settings.json":"$CONTAINER_HOME/.local/share/code-server/User/settings.json" \
+  -v "$SCRIPT_DIR/fish_history":"$CONTAINER_HOME/.local/share/fish/fish_history" \
+  -v "$PROJ_DIR":/home/dev/project \
+  "$@" \
+  c-dev --auth=none --bind-addr=0.0.0.0:8080
