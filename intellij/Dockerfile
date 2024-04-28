@@ -7,6 +7,7 @@ RUN pacman -S --noconfirm --needed \
     libxrender \
     libxtst \
     maven \
+    sbt \
     ttf-dejavu \
   && pacman -Scc --noconfirm
 
