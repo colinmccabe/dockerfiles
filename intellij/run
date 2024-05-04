@@ -4,16 +4,14 @@ set -eu
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
-x11docker --xpra --xc=yes --xauth=no --user=RETAIN \
-  --clipboard \
+docker run --rm --init \
   --name="$(basename "$1")" \
-  --network=dev \
-  -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
+  --network=dev \
   --tmpfs /tmp:exec \
   -v "$SCRIPT_DIR/javaUserPrefs":/home/dev/.java/.userPrefs \
   -v intellij_config:/home/dev/.config/JetBrains \
   -v intellij_cache:/home/dev/.cache/JetBrains \
   -v "$1":/home/dev/project \
-  -- \
+  -p 127.0.0.1:5900:5900 \
   intellij:latest

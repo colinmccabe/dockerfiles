@@ -1,4 +1,4 @@
-FROM archlinux-dev:latest
+FROM vnc-dev
 
 USER root
 RUN pacman -S --noconfirm --needed \
@@ -7,7 +7,6 @@ RUN pacman -S --noconfirm --needed \
     libxrender \
     libxtst \
     maven \
-    sbt \
     ttf-dejavu \
   && pacman -Scc --noconfirm
 
@@ -23,9 +22,10 @@ RUN tar -xf idea.tar.gz --strip-components=1 -C idea
 USER dev
 WORKDIR /home/dev
 
+RUN mkdir -p .config/openbox
+COPY openbox .config/openbox
+
 RUN mkdir -p .cache/JetBrains
 RUN mkdir -p .config/JetBrains
 
 WORKDIR project
-
-ENTRYPOINT ["/opt/idea/bin/idea.sh", "/home/dev/project"]
