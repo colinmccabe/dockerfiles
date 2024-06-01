@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://openbox.org/
+                file:///usr/share/openbox/menu.xsd">
+
+<menu id="root-menu" label="Openbox">
+  <item label="IntelliJ">
+    <action name="Execute">
+      <command>/opt/idea/bin/idea.sh</command>
+    </action>
+  </item>
+  <item label="GTKWave">
+    <action name="Execute">
+      <command>/usr/bin/gtkwave</command>
+    </action>
+  </item>
+  <item label="xterm">
+    <action name="Execute">
+      <command>xterm</command>
+    </action>
+  </item>
+</menu>
+
+</openbox_menu>

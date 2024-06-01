@@ -10,8 +10,8 @@ RUN pacman -S --noconfirm --needed \
     ttf-dejavu \
   && pacman -Scc --noconfirm
 
-ARG INTELLIJ_TAR=ideaIC-2024.1.tar.gz
-ARG INTELLIJ_HASH=01d1b224c5e88592f954b17796a76fa8391cdcafef27264e703c7ffe47bb4065
+ARG INTELLIJ_TAR=ideaIC-2024.1.1.tar.gz
+ARG INTELLIJ_HASH=4d4221630c4d1dcb9f198370f82d9364014a4a624684ad8b3958be9f01eb656a
 WORKDIR /opt
 COPY $INTELLIJ_TAR idea.tar.gz
 RUN echo "$INTELLIJ_HASH  idea.tar.gz" \

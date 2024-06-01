@@ -4,11 +4,6 @@ set -eu
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
-PORT=$1; shift
-PROJ_DIR=$1; shift
-PROJ_NAME="$(basename $PROJ_DIR)"
-CONTAINER_HOME=/home/dev
-
 if [ -c /dev/ICEBREAKER ]; then
   ICEBREAKER_DEV=$(readlink -f /dev/ICEBREAKER)
   echo "Found /dev/ICEBREAKER linked to $ICEBREAKER_DEV"
@@ -20,15 +15,14 @@ fi
 
 # shellcheck disable=SC2086
 docker run --rm --init \
-  --name="$PROJ_NAME" \
+  --name="$(basename "$1")" \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --network=dev \
-  -p 127.0.0.1:$PORT:8080 \
   --tmpfs /tmp:exec \
-  --tmpfs /home/dev/.cache:exec,uid=1000,gid=1000 \
+  -v "$SCRIPT_DIR/javaUserPrefs":/home/dev/.java/.userPrefs \
+  -v intellij_config:/home/dev/.config/JetBrains \
+  -v intellij_cache:/home/dev/.cache/JetBrains \
+  -v "$1":/home/dev/project \
+  -p 127.0.0.1:5900:5900 \
   $ICEBREAKER \
-  -v "$SCRIPT_DIR/settings.json":"$CONTAINER_HOME/.local/share/code-server/User/settings.json" \
-  -v "$SCRIPT_DIR/fish_history":"$CONTAINER_HOME/.local/share/fish/fish_history" \
-  -v "$PROJ_DIR":/home/dev/project \
-  "$@" \
-  fpga-dev --auth=none --bind-addr=0.0.0.0:8080
+  fpga-dev

@@ -1,6 +1,11 @@
-FROM code-server:latest
+FROM intellij
 
 USER root
+RUN pacman -S --noconfirm --needed \
+    gtkwave \
+    sbt \
+  && pacman -Scc --noconfirm
+
 WORKDIR /opt
 ARG OSS_VER=2023-11-12
 ARG OSS_VER_NODASH=20231112
@@ -14,18 +19,6 @@ ENV PATH "/opt/oss-cad-suite/bin:${PATH}"
 
 USER dev
 WORKDIR /home/dev
-
-RUN mkdir -p .local/share
-
-ARG EXT_VER=1.13.0
-ARG EXT_HASH=6b19972f056630299fed5a2fd0c6d26aa33ddb5b8a5037a083184236873a7980
-ARG EXT_VENDOR=mshr-h
-ARG EXT_NAME=VerilogHDL
-#RUN curl -L --compressed -o ext.vsix \
-#    "$EXT_BASE_URL/$EXT_VENDOR/vsextensions/$EXT_NAME/$EXT_VER/vspackage" &&\
-COPY $EXT_VENDOR.$EXT_NAME-$EXT_VER.vsix ext.vsix
-RUN echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
-  code-server --install-extension ext.vsix &&\
-  rm ext.vsix
+COPY openbox .config/openbox
 
 WORKDIR project
