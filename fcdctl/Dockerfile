@@ -1,6 +1,6 @@
 # Build
 
-FROM alpine:3.18 AS build
+FROM alpine:3.19 AS build
 
 RUN apk add --no-cache gcc make libc-dev libusb-dev
 
@@ -23,7 +23,7 @@ RUN chmod +x fcdctl
 
 # Run
 
-FROM alpine:3.18
+FROM alpine:3.19
 
 RUN apk add --no-cache libusb
 

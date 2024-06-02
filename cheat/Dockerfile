@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.19
 
 WORKDIR /usr/local/bin
 ARG CHEAT_VER=4.2.0
