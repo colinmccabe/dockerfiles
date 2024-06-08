@@ -3,6 +3,8 @@ FROM intellij
 USER root
 RUN pacman -S --noconfirm --needed \
     gtkwave \
+    riscv32-elf-binutils \
+    riscv64-elf-gcc \
     sbt \
   && pacman -Scc --noconfirm
 
