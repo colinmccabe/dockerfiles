@@ -5,6 +5,6 @@
     "extensions.autoUpdate": false,
     "terminal.integrated.defaultProfile.linux": "fish",
     "update.mode": "none",
-    "workbench.colorTheme": "Default Dark+",
+    "workbench.colorTheme": "Default Dark Modern",
     "workbench.tree.indent": 20
 }
