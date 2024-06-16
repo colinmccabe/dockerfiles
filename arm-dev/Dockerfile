@@ -9,39 +9,22 @@ RUN pacman -S --noconfirm \
     openocd \
   && pacman -Scc --noconfirm
 
+WORKDIR /opt
+RUN mkdir jlink
+ENV PATH="/opt/jlink:${PATH}"
+ARG JLINK_VER=796l
+ARG JLINK_HASH=67489b1d16b9674c75ed37b907b724800cbe46681a1d9017d345ded28297a9c6
+COPY ./JLink_Linux_V${JLINK_VER}_x86_64.tgz jlink.tgz
+RUN echo "$JLINK_HASH jlink.tgz" | sha256sum -c -
+RUN mkdir -p /opt/jlink &&\
+  tar -x --strip-components=1 -f jlink.tgz -C jlink &&\
+  rm jlink.tgz
+
 USER dev
 WORKDIR /home/dev
 
-ENV PKG_NAME=stm32f0-headers-git
-ENV PKG_URL=https://aur.archlinux.org/$PKG_NAME.git
-ENV PKG_COMMIT=1576f68ba09d579bd8cdf3ec906a5603129ecf72
-RUN git clone $PKG_URL $PKG_NAME &&\
-  cd $PKG_NAME &&\
-  git checkout $PKG_COMMIT &&\
-  makepkg -crs &&\
-  mv *.tar.zst ../$PKG_NAME.tar.zst &&\
-  cd .. &&\
-  rm -rf $PKG_NAME
-USER root
-RUN pacman --noconfirm -U $PKG_NAME.tar.zst
-USER dev
-
-ENV PKG_NAME=stm32g0-headers-git
-ENV PKG_URL=https://aur.archlinux.org/$PKG_NAME.git
-ENV PKG_COMMIT=2300686f5560e22cccf4c658a7fb4eba3cc85ebf
-RUN git clone $PKG_URL $PKG_NAME &&\
-  cd $PKG_NAME &&\
-  git checkout $PKG_COMMIT &&\
-  makepkg -crs &&\
-  mv *.tar.zst ../$PKG_NAME.tar.zst &&\
-  cd .. &&\
-  rm -rf $PKG_NAME
-USER root
-RUN pacman --noconfirm -U $PKG_NAME.tar.zst
-USER dev
-
-ENV EXT_VER=1.12.0
-ENV EXT_HASH=a231852f0751574321ac4fad2d107b761e3d05144c8b7004428c1e245793ebe1
+ENV EXT_VER=1.12.1
+ENV EXT_HASH=8a82ba830b6468071fc67d7596aa7086ba482d27dfb7f6f2784aa812d2487ccd
 ENV EXT_VENDOR=marus25
 ENV EXT_NAME=cortex-debug
 #RUN curl -L --compressed -o ext.vsix \

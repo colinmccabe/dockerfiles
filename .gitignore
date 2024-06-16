@@ -2,6 +2,9 @@
 /images
 /pull
 
-*.vsix
 dotfiles.git/
 fish_history
+
+*.tar.gz
+*.tgz
+*.vsix
