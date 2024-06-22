@@ -9,6 +9,7 @@ USER dev
 ENV PATH="/home/dev/.local/bin:${PATH}"
 WORKDIR /home/dev
 
+RUN mkdir -p .local/share/fish
 RUN mkdir -p .config/fish/functions
 COPY robbyrussell.fish .config/fish/functions/fish_prompt.fish
 
