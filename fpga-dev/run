@@ -23,6 +23,7 @@ docker run --rm --init \
   -v "$SCRIPT_DIR/javaUserPrefs":/home/dev/.java/.userPrefs \
   -v intellij_config:/home/dev/.config/JetBrains \
   -v intellij_cache:/home/dev/.cache/JetBrains \
+  -v intellij_share:/home/dev/.local/share/JetBrains \
   -v "$1":/home/dev/project \
   -p 127.0.0.1:5900:5900 \
   $ICEBREAKER \
