@@ -10,4 +10,4 @@ docker run --rm --init \
   --tmpfs /tmp:exec \
   -v "$1":/home/dev/project \
   -p 127.0.0.1:5900:5900 \
-  kicad
+  vnc-dev

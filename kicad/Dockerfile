@@ -1,15 +1,12 @@
-FROM debian:bookworm-slim
+FROM vnc-dev
 
-RUN groupadd -g 1000 appuser
-RUN useradd -m -u 1000 -g appuser appuser
-
-RUN apt-get update \
-  && apt-get install -y \
+USER root
+RUN pacman -S --noconfirm \
     kicad \
-  && rm -rf /var/lib/apt/lists/*
+    kicad-library \
+  && pacman -Scc --noconfirm
 
-USER appuser
-RUN mkdir /home/appuser/workdir
-WORKDIR /home/appuser/workdir
+USER dev
 
-ENTRYPOINT ["kicad"]
+RUN mkdir -p .config/openbox
+COPY openbox .config/openbox
