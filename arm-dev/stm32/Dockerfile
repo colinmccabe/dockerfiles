@@ -1,22 +1,66 @@
 FROM arm-dev:latest
 
-USER dev
-WORKDIR /home/dev
+USER root
+
+ARG STM_ORG=https://github.com/STMicroelectronics
+
+ARG STM_DEV=L0
+ARG STM_DEV_L=l0
+ARG DEP_VER=1.9.3
+ARG DEP_HASH=c534195f72bd320773ce490cee7a4a912fae4e20bcac660e1ec24854a066e255
+ARG DEP_URL=$STM_ORG/cmsis_device_${STM_DEV_L}/archive/refs/tags/v$DEP_VER.tar.gz
+ARG INSTALL_DIR=/opt/stm32/$STM_DEV
+RUN mkdir -p $INSTALL_DIR/{include,startup}
+COPY linker.ld $INSTALL_DIR
+RUN curl -L $DEP_URL -o dep.tar.gz &&\
+  echo "$DEP_HASH  dep.tar.gz" | sha256sum -c - &&\
+  mkdir dep &&\
+  tar -xf dep.tar.gz --strip-components=1 -C dep &&\
+  cd dep/ &&\
+  cp Include/* $INSTALL_DIR/include/ &&\
+  cp Source/Templates/{*.c,gcc/*.s} $INSTALL_DIR/startup/ &&\
+  cd .. &&\
+  rm -rf dep dep.tar.gz
+ARG DEP_VER=1.12.2
+ARG DEP_HASH=a7c35cea9319d3612467b762a0454205dbd54368be9c4d5dc5b4f75286558f13
+ARG DEP_URL=$STM_ORG/STM32Cube${STM_DEV}/archive/refs/tags/v$DEP_VER.tar.gz
+RUN curl -L $DEP_URL -o dep.tar.gz &&\
+  echo "$DEP_HASH  dep.tar.gz" | sha256sum -c - &&\
+  mkdir dep &&\
+  tar -xf dep.tar.gz --strip-components=1 -C dep &&\
+  cd dep &&\
+  cp Drivers/CMSIS/Include/* $INSTALL_DIR/include/ &&\
+  cd .. &&\
+  rm -rf dep dep.tar.gz
 
 ARG STM_DEV=G0
-ARG HEADERS_PROJ=STM32Cube$STM_DEV
-ARG HEADERS_URL=https://github.com/STMicroelectronics/$HEADERS_PROJ.git
-ARG HEADERS_TAG=v1.6.1
-RUN git clone --single-branch --depth=1 -b $HEADERS_TAG $HEADERS_URL $HEADERS_PROJ &&\
-  cd $HEADERS_PROJ &&\
-  git checkout $HEADERS_COMMIT
-WORKDIR $HEADERS_PROJ
-USER root
-ARG HEADERS_INSTALL_DIR=/opt/STM32/STM32$STM_DEV
-RUN mkdir -p $HEADERS_INSTALL_DIR
-RUN cp Drivers/CMSIS/Device/ST/STM32${STM_DEV}xx/Include/* \
-  Drivers/CMSIS/Include/* \
-  $HEADERS_INSTALL_DIR
+ARG STM_DEV_L=g0
+ARG DEP_VER=1.4.4
+ARG DEP_HASH=99048bfa7bd443b14cc7937fc89bb6bd7990429e74a08920554f5cb5bbd15965
+ARG DEP_URL=$STM_ORG/cmsis_device_${STM_DEV_L}/archive/refs/tags/v$DEP_VER.tar.gz
+ARG INSTALL_DIR=/opt/stm32/$STM_DEV
+RUN mkdir -p $INSTALL_DIR/{include,startup}
+COPY linker.ld $INSTALL_DIR
+RUN curl -L $DEP_URL -o dep.tar.gz &&\
+  echo "$DEP_HASH  dep.tar.gz" | sha256sum -c - &&\
+  mkdir dep &&\
+  tar -xf dep.tar.gz --strip-components=1 -C dep &&\
+  cd dep/ &&\
+  cp Include/* $INSTALL_DIR/include/ &&\
+  cp Source/Templates/{*.c,gcc/*.s} $INSTALL_DIR/startup/ &&\
+  cd .. &&\
+  rm -rf dep dep.tar.gz
+ARG DEP_VER=1.6.2
+ARG DEP_HASH=a67c7d59e488264717364410cf224b85ede3ededd739ed09ecc3fb455ec08c69
+ARG DEP_URL=$STM_ORG/STM32Cube${STM_DEV}/archive/refs/tags/v$DEP_VER.tar.gz
+RUN curl -L $DEP_URL -o dep.tar.gz &&\
+  echo "$DEP_HASH  dep.tar.gz" | sha256sum -c - &&\
+  mkdir dep &&\
+  tar -xf dep.tar.gz --strip-components=1 -C dep &&\
+  cd dep &&\
+  cp Drivers/CMSIS/Include/* $INSTALL_DIR/include/ &&\
+  cd .. &&\
+  rm -rf dep dep.tar.gz
 
 USER dev
 WORKDIR /home/dev/project
