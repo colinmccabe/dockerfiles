@@ -7,7 +7,7 @@ docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
   -u $USER_ID:$USER_ID \
-  -v "$HOME/proj/dockerfiles/shellcheck/shellcheckrc":/home/appuser/.shellcheckrc:ro \
+  -v "$HOME/proj/dockerfiles/shellcheck/shellcheckrc":/shellcheckrc:ro \
   -v "$(pwd)":/mnt:ro \
   -w /mnt \
   shellcheck "$@"
