@@ -16,8 +16,8 @@ WORKDIR /home/dev
 RUN mkdir -p .config/pypoetry
 COPY ./poetry.toml .config/pypoetry/config.toml
 
-ENV EXT_VER=2023.11.11841013
-ENV EXT_HASH=d4c6dfbef2c92a5a6bf1f53aa3b7826fabb4abea125946eeb4c652f78026c89c
+ENV EXT_VER=2024.13.2024081501
+ENV EXT_HASH=a673173d833d125e4794757110118681dc03190a196011252fd77df9a5ea9587
 ENV EXT_VENDOR=ms-python
 ENV EXT_NAME=python
 #RUN curl -L --compressed -o ext.vsix \
