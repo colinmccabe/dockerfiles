@@ -3,8 +3,8 @@ FROM archlinux-dev:latest
 USER root
 RUN mkdir -p /opt/code-server
 WORKDIR /opt/code-server
-ARG CODE_VER=4.91.1
-ARG CODE_HASH=0851ec5cbeef62ee340bd2725cd8863bd84ee1bacc54611cefc812ccbdd0e6e4
+ARG CODE_VER=4.93.1
+ARG CODE_HASH=8c001f865cf082e914375e8f28e9e15b25faa1f3de455ddc30158d54fc2326d3
 ARG CODE_URL=https://github.com/cdr/code-server/releases/download/v$CODE_VER/code-server-$CODE_VER-linux-amd64.tar.gz
 RUN curl -L $CODE_URL -o code-server.tar.gz \
   && echo "$CODE_HASH  code-server.tar.gz" | sha256sum -c - \

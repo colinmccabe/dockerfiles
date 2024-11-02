@@ -7,7 +7,7 @@ ARG STM_ORG=https://github.com/STMicroelectronics
 ARG STM_DEV=L0
 ARG STM_DEV_L=l0
 ARG DEP_VER=1.9.3
-ARG DEP_HASH=c534195f72bd320773ce490cee7a4a912fae4e20bcac660e1ec24854a066e255
+ARG DEP_HASH=05b898a51ed34ac37ff63ea3abcd7a22a68d552a9d0d279586ffc6ca317906c6
 ARG DEP_URL=$STM_ORG/cmsis_device_${STM_DEV_L}/archive/refs/tags/v$DEP_VER.tar.gz
 ARG INSTALL_DIR=/opt/stm32/$STM_DEV
 RUN mkdir -p $INSTALL_DIR/{include,startup}
@@ -36,7 +36,7 @@ RUN curl -L $DEP_URL -o dep.tar.gz &&\
 ARG STM_DEV=G0
 ARG STM_DEV_L=g0
 ARG DEP_VER=1.4.4
-ARG DEP_HASH=99048bfa7bd443b14cc7937fc89bb6bd7990429e74a08920554f5cb5bbd15965
+ARG DEP_HASH=f0b23d0c90220b43894105d7f58e15d4b7a0bd99fa7d19b9086582b7a4d256df
 ARG DEP_URL=$STM_ORG/cmsis_device_${STM_DEV_L}/archive/refs/tags/v$DEP_VER.tar.gz
 ARG INSTALL_DIR=/opt/stm32/$STM_DEV
 RUN mkdir -p $INSTALL_DIR/{include,startup}

@@ -1,9 +1,16 @@
 FROM code-server:latest
 
+USER root
+WORKDIR /
+RUN pacman -S --noconfirm --needed \
+    gdb \
+  && pacman -Scc --noconfirm
+
+USER dev
 WORKDIR /home/dev
 
-ENV EXT_VER=1.20.5
-ENV EXT_HASH=6ab4c1b77516039ce8a3474bd38e12c7f353d4b512efa5df1884bde8d38cbc99
+ENV EXT_VER=1.23.0
+ENV EXT_HASH=b714dedddf35145639cddf7c349d8899fcb75f53416508352060e0674feae03c
 ENV EXT_VENDOR=ms-vscode
 ENV EXT_NAME=cpptools
 #RUN curl -L --compressed -o ext.vsix \
