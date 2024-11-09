@@ -1,4 +1,7 @@
 {
+    "black-formatter.args": [
+      "--skip-string-normalization"
+    ],
     "editor.minimap.enabled": false,
     "editor.tabSize": 2,
     "extensions.autoCheckUpdates": false,

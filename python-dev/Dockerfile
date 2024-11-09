@@ -6,6 +6,8 @@ RUN pacman -S --noconfirm --needed \
     flake8 \
     mypy \
     python \
+    python-black \
+    python-isort \
     python-pip \
     uv \
   && pacman -Scc --noconfirm
@@ -25,10 +27,28 @@ RUN echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
   code-server --install-extension ext.vsix &&\
   rm ext.vsix
 
+ENV EXT_VER=2024.5.12841012
+ENV EXT_HASH=735a70f76ba55d8ae4f0b2f2d71848d6410f29f9aa601327cccd39a9f66da4b7
+ENV EXT_VENDOR=ms-python
+ENV EXT_NAME=black-formatter
+COPY $EXT_VENDOR.$EXT_NAME-$EXT_VER.vsix ext.vsix
+RUN echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
+  code-server --install-extension ext.vsix &&\
+  rm ext.vsix
+
 ENV EXT_VER=2023.13.12291011
 ENV EXT_HASH=c610274698078976f80e263eb4a458bd8311583f231deabd96e96a7cb67b62ad
 ENV EXT_VENDOR=ms-python
 ENV EXT_NAME=flake8
+COPY $EXT_VENDOR.$EXT_NAME-$EXT_VER.vsix ext.vsix
+RUN echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
+  code-server --install-extension ext.vsix &&\
+  rm ext.vsix
+
+ENV EXT_VER=2023.13.12321012
+ENV EXT_HASH=30ac08f4dd1c4054543b7f3efe05a7e137801b774e94b6a14f07631f8c3b2202
+ENV EXT_VENDOR=ms-python
+ENV EXT_NAME=isort
 COPY $EXT_VENDOR.$EXT_NAME-$EXT_VER.vsix ext.vsix
 RUN echo "$EXT_HASH  ext.vsix" | sha256sum -c - &&\
   code-server --install-extension ext.vsix &&\
