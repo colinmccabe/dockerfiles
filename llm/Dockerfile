@@ -8,6 +8,8 @@ RUN chown -R appuser:appuser /usr/local &&\
   su appuser -c 'pip install --no-cache-dir --require-hashes -r /requirements.txt' &&\
   chown -R root:root /usr/local
 
+RUN llm install llm-claude-3
+
 WORKDIR /home/appuser
 
 RUN mkdir -p .config/io.datasette.llm
