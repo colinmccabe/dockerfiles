@@ -1,13 +1,14 @@
 {
-    "black-formatter.args": [
-      "--skip-string-normalization"
-    ],
     "editor.minimap.enabled": false,
     "editor.tabSize": 2,
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
-    "flake8.args": [
-      "--append-config", "/home/dev/.config/flake8"
+    "ruff.lint.preview": true,
+    "ruff.lint.select": [
+      "E",
+      "W",
+      "F",
+      "I"
     ],
     "terminal.integrated.defaultProfile.linux": "fish",
     "update.mode": "none",
