@@ -3,7 +3,7 @@ FROM code-server:latest
 USER root
 WORKDIR /
 RUN pacman -S --noconfirm --needed \
-    nodejs-lts-iron \
+    nodejs-lts-jod \
     npm \
     prettier \
   && pacman -Scc --noconfirm

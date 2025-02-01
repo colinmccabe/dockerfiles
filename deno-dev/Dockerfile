@@ -9,8 +9,8 @@ RUN pacman -S --noconfirm --needed \
 USER dev
 WORKDIR /home/dev
 
-ARG EXT_VER=3.42.0
-ARG EXT_HASH=6df869231a87794a61e75541325281bdd04921e48ef44d598adadf565fccaa04
+ARG EXT_VER=3.43.1
+ARG EXT_HASH=6a7442d0ead72ed0463cab9a8f1f7f36881b0c4907f46aee7fafe995ed0fca52
 ARG EXT_VENDOR=denoland
 ARG EXT_NAME=vscode-deno
 #RUN curl -L --compressed -o ext.vsix \
