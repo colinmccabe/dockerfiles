@@ -1,7 +1,7 @@
 FROM python:3.12-slim-bookworm
 
-RUN groupadd -g 13472 appuser
-RUN useradd -m -u 13472 -g appuser appuser
+RUN groupadd -g 1000 appuser
+RUN useradd -m -u 1000 -g appuser appuser
 
 COPY requirements.txt .
 RUN chown -R appuser:appuser /usr/local &&\
@@ -10,4 +10,6 @@ RUN chown -R appuser:appuser /usr/local &&\
 
 USER appuser
 
-ENTRYPOINT ["datasette"]
+WORKDIR /mnt
+
+ENTRYPOINT ["datasette", "-h", "0.0.0.0", "."]
