@@ -18,11 +18,16 @@ elif [ -c /dev/ttyUSB0 ]; then
   echo "Found serial $SERIAL_DEVICE"
 fi
 
-STLINK_DEVICE=
-if [ -c "/dev/STLINK" ]; then
-  STLINK_DEVICE=--device=$(readlink -f "/dev/STLINK")
-  echo "Found STLINK at $STLINK_DEVICE"
-fi
+DEBUG_DEVICE=
+DEBUGGERS=('JLINK' 'STLINK')
+for D in "${DEBUGGERS[@]}"; do
+  if [ -c "/dev/$D" ]; then
+    DEV_FILE=$(readlink -f "/dev/$D")
+    echo "Found /dev/$D at $DEV_FILE"
+    DEBUG_DEVICE=--device=$DEV_FILE
+    break
+  fi
+done
 
 echo "code-server listening on port $PORT"
 
@@ -32,7 +37,7 @@ docker run --rm --init \
   --cap-drop=ALL --security-opt=no-new-privileges \
   -p 127.0.0.1:$PORT:8080 \
   $SERIAL_DEVICE \
-  $STLINK_DEVICE \
+  $DEBUG_DEVICE \
   --tmpfs /tmp:exec \
   --tmpfs /home/dev/.cache:exec,uid=1000,gid=1000 \
   -v "$SCRIPT_DIR/settings.json":"$CONTAINER_HOME/.local/share/code-server/User/settings.json" \
