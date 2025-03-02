@@ -1,3 +1,4 @@
-aiodiscover==1.6.1
+aiodiscover==2.1.0
 homeassistant
+pymicro-vad==1.0.1
 pyspeex-noise
