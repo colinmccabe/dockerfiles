@@ -1,6 +1,6 @@
 # Build
 
-FROM alpine:3.19 AS build
+FROM alpine:3.20 AS build
 
 RUN apk add --no-cache gcc make libc-dev
 
@@ -23,7 +23,7 @@ RUN chmod +x lpc21isp
 
 # Run
 
-FROM alpine:3.19
+FROM alpine:3.20
 
 COPY --from=build /home/appuser/build/lpc21isp /usr/local/bin/
 
