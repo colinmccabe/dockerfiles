@@ -7,6 +7,6 @@ RUN pacman -S --noconfirm \
   && pacman -Scc --noconfirm
 
 USER dev
-WORKDIR /home/dev
 
-WORKDIR project
+RUN mkdir /home/dev/Arduino
+WORKDIR /home/dev/Arduino
