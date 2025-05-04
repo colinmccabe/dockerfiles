@@ -1,4 +1,25 @@
 NUC 15 Core Ultra 7 255H
 Single-core: 3108
-Multi-core: 14558
+Multi-core:  14558
 https://browser.geekbench.com/v6/cpu/11811071
+https://browser.geekbench.com/v6/cpu/11814063
+
+Asus PN64 mini PC i5-13500H
+Single-core: 2197
+Multi-core:  11479
+https://browser.geekbench.com/v6/cpu/11813019
+
+Tower i5-4570
+Single-core: 1263
+Multi-core:  3728
+https://browser.geekbench.com/v6/cpu/11812120
+
+Lenovo G510 laptop i7-4700MQ
+Single-core: 1127
+Multi-core:  2752
+https://browser.geekbench.com/v6/cpu/11811824
+
+Mac Mini Server 6,2 i7-3615QM
+Single-core: 661
+Multi-core:  2044
+https://browser.geekbench.com/v6/cpu/11811528
