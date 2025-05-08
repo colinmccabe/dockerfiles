@@ -1,8 +1,13 @@
 NUC 15 Core Ultra 7 255H
+Standard fan mode
 Single-core: 3108
 Multi-core:  14558
 https://browser.geekbench.com/v6/cpu/11811071
 https://browser.geekbench.com/v6/cpu/11814063
+Whisper fan mode
+Single-core: 3100
+Multi-core:  14503
+https://browser.geekbench.com/v6/cpu/11860226
 
 Asus PN64 mini PC i5-13500H
 Single-core: 2197
