@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+USER_ID=$(( 10000 + RANDOM % 10000 ))
+
+docker run --rm -it \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --read-only \
+  -u $USER_ID:$USER_ID \
+  --tmpfs /tmp \
+  --entrypoint bash \
+  passmark

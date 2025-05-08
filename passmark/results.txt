@@ -1,0 +1,26 @@
+Intel Core Ultra 7 255H (x86_64)
+16 cores @ 5100 MHz  |  30.7 GiB RAM
+Number of Processes: 16  |  Test Iterations: 1  |  Test Duration: Medium
+--------------------------------------------------------------------------------
+CPU Mark:                          37573
+  Integer Math                     86712 Million Operations/s
+  Floating Point Math              108214 Million Operations/s
+  Prime Numbers                    265 Million Primes/s
+  Sorting                          52184 Thousand Strings/s
+  Encryption                       31359 MB/s
+  Compression                      385879 KB/s
+  CPU Single Threaded              4725 Million Operations/s
+  Physics                          3447 Frames/s
+  Extended Instructions (SSE)      25211 Million Matrices/s
+
+Memory Mark:                       2281
+  Database Operations              14345 Thousand Operations/s
+  Memory Read Cached               38105 MB/s
+  Memory Read Uncached             26878 MB/s
+  Memory Write                     15702 MB/s
+  Available RAM                    26986 Megabytes
+  Memory Latency                   101 Nanoseconds
+  Memory Threaded                  80025 MB/s
+--------------------------------------------------------------------------------
+
+Results submitted: https://www.passmark.com/baselines/V11/display.php?id=509395542869
