@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim
 
-RUN groupadd -g 1000 appuser
-RUN useradd -m -u 1000 -g appuser appuser
+RUN groupadd -g 1000 colin
+RUN useradd -m -u 1000 -g colin colin
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends python3 \
@@ -10,8 +10,8 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends magic-wormhole \
   && rm -rf /var/lib/apt/lists/*
 
-USER appuser
-RUN mkdir -p /home/appuser/workdir
-WORKDIR /home/appuser/workdir
+USER colin
+RUN mkdir -p /home/colin/workdir
+WORKDIR /home/colin/workdir
 
 ENTRYPOINT ["wormhole"]

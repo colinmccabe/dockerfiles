@@ -19,8 +19,8 @@ RUN curl -L $OSS_URL -o oss-cad-suite.tar.gz &&\
   rm oss-cad-suite.tar.gz
 ENV PATH "/opt/oss-cad-suite/bin:${PATH}"
 
-USER dev
-WORKDIR /home/dev
+USER colin
+WORKDIR /home/colin
 COPY openbox .config/openbox
 
 WORKDIR project

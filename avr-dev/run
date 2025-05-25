@@ -20,10 +20,10 @@ x11docker --nxagent --clipboard --user=RETAIN \
   --security-opt seccomp="$SCRIPT_DIR/../seccomp-electron.json" \
   $SERIAL_DEVICE \
   --tmpfs /tmp:exec \
-  --tmpfs /home/dev/.cache:uid=1000,gid=1000 \
-  -v "$SCRIPT_DIR/settings.json":'/home/dev/.config/Code - OSS/User/settings.json' \
-  -v "$SCRIPT_DIR/fish_history":/home/dev/.local/share/fish/fish_history \
-  -v "$1":/home/dev/project \
+  --tmpfs /home/colin/.cache:uid=1000,gid=1000 \
+  -v "$SCRIPT_DIR/settings.json":'/home/colin/.config/Code - OSS/User/settings.json' \
+  -v "$SCRIPT_DIR/fish_history":/home/colin/.local/share/fish/fish_history \
+  -v "$1":/home/colin/project \
   --network=dev \
   -- \
   avr-dev:latest

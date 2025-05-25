@@ -9,8 +9,8 @@ docker run --rm -i \
   --read-only \
   -u 1000:1000 \
   --tmpfs=/tmp \
-  --tmpfs=/home/appuser/.cache \
-  -v "$(pwd)":/home/appuser/workdir:ro \
+  --tmpfs=/home/colin/.cache \
+  -v "$(pwd)":/home/colin/workdir:ro \
   --entrypoint="$COMMAND" \
   pip-tools \
   "$@"

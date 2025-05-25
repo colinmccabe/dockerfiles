@@ -1,4 +1,4 @@
-FROM vnc-dev
+FROM vnc
 
 USER root
 RUN pacman -S --noconfirm --needed \
@@ -19,8 +19,8 @@ RUN echo "$INTELLIJ_HASH  idea.tar.gz" \
 RUN mkdir idea
 RUN tar -xf idea.tar.gz --strip-components=1 -C idea
 
-USER dev
-WORKDIR /home/dev
+USER colin
+WORKDIR /home/colin
 
 RUN mkdir -p .config/openbox
 COPY openbox .config/openbox

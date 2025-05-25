@@ -1,7 +1,7 @@
 FROM node:14-bookworm-slim
 
-RUN groupadd -g 1000 appuser
-RUN useradd -m -u 1000 -g appuser appuser
+RUN groupadd -g 1000 colin
+RUN useradd -m -u 1000 -g colin colin
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends ca-certificates curl \
@@ -9,8 +9,8 @@ RUN apt-get update \
 
 RUN npm i -g tiddlywiki
 
-USER appuser
-ENV HOME /home/appuser
+USER colin
+ENV HOME /home/colin
 
 ENV TIDDLYWIKI_DIR $HOME/tiddlywiki
 RUN mkdir $TIDDLYWIKI_DIR

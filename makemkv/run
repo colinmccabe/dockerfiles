@@ -9,8 +9,8 @@ docker run --rm -it \
   --network=none \
   -u 1000:1000 \
   --device=/dev/sg1 \
-  -v "$HOME/proj/dockerfiles/vlc/KEYDB.cfg":/home/appuser/.config/aacs/KEYDB.cfg:ro \
-  -v "$(pwd)":/home/appuser/workdir \
+  -v "$HOME/proj/dockerfiles/vlc/KEYDB.cfg":/home/colin/.config/aacs/KEYDB.cfg:ro \
+  -v "$(pwd)":/home/colin/workdir \
   --entrypoint="$COMMAND" \
   makemkv \
   "$@"

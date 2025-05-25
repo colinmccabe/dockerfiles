@@ -9,6 +9,6 @@ RUN wget $PUP_URL -O pup.zip &&\
   unzip pup.zip &&\
   chmod +x pup
 
-USER appuser
+USER colin
 
 ENTRYPOINT ["pup"]

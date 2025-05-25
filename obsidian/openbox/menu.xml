@@ -6,9 +6,9 @@
                 file:///usr/share/openbox/menu.xsd">
 
 <menu id="root-menu" label="Openbox">
-  <item label="IntelliJ">
+  <item label="Obsidian">
     <action name="Execute">
-      <command>/opt/idea/bin/idea.sh /home/colin/project</command>
+      <command>/usr/bin/obsidian</command>
     </action>
   </item>
   <item label="xterm">

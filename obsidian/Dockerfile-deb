@@ -1,7 +1,7 @@
 FROM debian:bullseye-slim
 
-RUN groupadd -g 1000 appuser
-RUN useradd -m -u 1000 -g appuser appuser
+RUN groupadd -g 1000 colin
+RUN useradd -m -u 1000 -g colin colin
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -21,8 +21,8 @@ RUN curl -L -o obsidian.deb $PKG_URL &&\
 
 COPY xdg-open-client /usr/local/bin/xdg-open
 
-USER appuser
-WORKDIR /home/appuser
+USER colin
+WORKDIR /home/colin
 
 RUN mkdir -p .config/obsidian
 COPY obsidian.json .config/obsidian/

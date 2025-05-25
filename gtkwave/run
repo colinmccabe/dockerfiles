@@ -7,6 +7,6 @@ x11docker --xc=yes --xpra --user=RETAIN \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   -u 1000:1000 \
-  -v "$1":/home/appuser/workdir \
+  -v "$1":/home/colin/workdir \
   -- \
   gtkwave

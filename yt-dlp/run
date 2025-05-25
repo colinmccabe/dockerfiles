@@ -6,6 +6,6 @@ docker run --rm -it \
   --cap-drop ALL --security-opt=no-new-privileges \
   --read-only \
   -u 1000:1000 \
-  --tmpfs=/home/appuser/.cache \
-  -v "$HOME/apps/yt-dlp":/home/appuser/workdir \
+  --tmpfs=/home/colin/.cache \
+  -v "$HOME/apps/yt-dlp":/home/colin/workdir \
   yt-dlp "$@"

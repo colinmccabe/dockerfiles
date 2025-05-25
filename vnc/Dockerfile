@@ -1,4 +1,4 @@
-FROM archlinux-dev
+FROM archlinux-colin
 
 USER root
 RUN pacman -S --noconfirm \
@@ -13,13 +13,9 @@ RUN pacman -S --noconfirm \
 
 RUN echo ':0=dev' >> /etc/tigervnc/vncserver.users
 
-USER dev
-WORKDIR /home/dev
+USER colin
 
 RUN mkdir .vnc
-
-RUN echo password | vncpasswd -f > .vnc/passwd &&\
-  chmod 600 .vnc/passwd
 
 RUN echo -e "#!/bin/sh\nexec openbox-session" > .vnc/xstartup && \
     chmod +x .vnc/xstartup

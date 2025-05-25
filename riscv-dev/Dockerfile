@@ -9,5 +9,5 @@ RUN pacman -S --noconfirm --needed \
     riscv32-elf-newlib \
   && pacman -Scc --noconfirm
 
-USER dev
-WORKDIR /home/dev/project
+USER colin
+WORKDIR /home/colin/project

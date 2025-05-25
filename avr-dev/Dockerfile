@@ -7,7 +7,7 @@ RUN pacman -S --noconfirm \
     avrdude \
   && pacman -Scc --noconfirm
 
-USER dev
-WORKDIR /home/dev/project
+USER colin
+WORKDIR /home/colin/project
 
 ENTRYPOINT ["code", "-w", "."]

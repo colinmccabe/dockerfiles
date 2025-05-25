@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim
 
-RUN groupadd -g 1000 appuser
-RUN useradd -m -u 1000 -g appuser appuser
+RUN groupadd -g 1000 colin
+RUN useradd -m -u 1000 -g colin colin
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
@@ -9,6 +9,6 @@ RUN apt-get update \
     transmission-daemon \
   && rm -rf /var/lib/apt/lists/*
 
-USER appuser
-RUN mkdir /home/appuser/Downloads
-WORKDIR /home/appuser/Downloads
+USER colin
+RUN mkdir /home/colin/Downloads
+WORKDIR /home/colin/Downloads

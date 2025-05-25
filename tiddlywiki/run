@@ -9,6 +9,6 @@ echo
 
 docker run --rm -d --init --name=tiddlywiki \
   --cap-drop=ALL --security-opt=no-new-privileges \
-  --mount type=bind,src="$HOME/notes/tiddlywiki",dst=/home/appuser/tiddlywiki/tiddlers \
+  --mount type=bind,src="$HOME/notes/tiddlywiki",dst=/home/colin/tiddlywiki/tiddlers \
   -p "127.0.0.1:$PORT:8080" \
   tiddlywiki . --listen host=0.0.0.0

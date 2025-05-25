@@ -7,7 +7,7 @@ PORT=$1; shift
 BOARD=$1; shift
 PROJ_DIR=$1; shift
 PROJ_NAME="$(basename "$PROJ_DIR")"
-CONTAINER_HOME=/home/dev
+CONTAINER_HOME=/home/colin
 
 SERIAL_DEVICE=
 if [ -c /dev/ttyACM0 ]; then
@@ -39,9 +39,9 @@ docker run --rm --init \
   $SERIAL_DEVICE \
   $DEBUG_DEVICE \
   --tmpfs /tmp:exec \
-  --tmpfs /home/dev/.cache:exec,uid=1000,gid=1000 \
+  --tmpfs /home/colin/.cache:exec,uid=1000,gid=1000 \
   -v "$SCRIPT_DIR/settings.json":"$CONTAINER_HOME/.local/share/code-server/User/settings.json" \
   -v "$SCRIPT_DIR/fish_history":"$CONTAINER_HOME/.local/share/fish/fish_history" \
-  -v "$PROJ_DIR":/home/dev/Arduino \
+  -v "$PROJ_DIR":/home/colin/Arduino \
   "arduino-$BOARD" \
   code-server --auth=none --bind-addr=0.0.0.0:8080

@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim
 
-RUN groupadd -g 1000 appuser
-RUN useradd -m -u 1000 -g appuser appuser
+RUN groupadd -g 1000 colin
+RUN useradd -m -u 1000 -g colin colin
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends pulseaudio \
@@ -10,8 +10,8 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends musescore \
   && rm -rf /var/lib/apt/lists/*
 
-USER appuser
-ENV SCORE_DIR=/home/appuser/Documents/MuseScore2/Scores
+USER colin
+ENV SCORE_DIR=/home/colin/Documents/MuseScore2/Scores
 RUN mkdir -p $SCORE_DIR
 WORKDIR $SCORE_DIR
 

@@ -5,8 +5,8 @@ RUN pacman -S --noconfirm \
     cmake \
   && pacman -Scc --noconfirm
 
-USER dev
-WORKDIR /home/dev
+USER colin
+WORKDIR /home/colin
 
 ENV PICO_SDK_PATH=/opt/pico-sdk
 ENV PICO_SDK_URL=https://github.com/raspberrypi/pico-sdk.git
@@ -21,7 +21,7 @@ USER root
 RUN cp -r pico-sdk $PICO_SDK_PATH &&\
   rm -r pico-sdk
 
-USER dev
+USER colin
 WORKDIR project
 
 ENTRYPOINT ["code-server", "."]

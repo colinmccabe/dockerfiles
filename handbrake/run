@@ -8,7 +8,7 @@ x11docker --nxagent --no-auth --user=RETAIN \
   --cap-drop=ALL --security-opt=no-new-privileges \
   -u 1000:1000 \
   --device=/dev/sr0 \
-  -v "$HOME/proj/dockerfiles/vlc/KEYDB.cfg":/home/appuser/.config/aacs/KEYDB.cfg:ro \
-  -v "$HOME/apps/handbrake":/home/appuser/workdir \
+  -v "$HOME/proj/dockerfiles/vlc/KEYDB.cfg":/home/colin/.config/aacs/KEYDB.cfg:ro \
+  -v "$HOME/apps/handbrake":/home/colin/workdir \
   -- \
   handbrake "$@"

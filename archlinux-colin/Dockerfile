@@ -5,3 +5,7 @@ RUN echo 'Server=https://archive.archlinux.org/repos/2025/03/30/$repo/os/$arch' 
 
 RUN pacman --noconfirm -Sy &&\
   pacman --noconfirm -Scc
+
+RUN useradd -m colin
+USER colin
+WORKDIR /home/colin

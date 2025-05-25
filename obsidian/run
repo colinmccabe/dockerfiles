@@ -11,8 +11,8 @@ x11docker --xc=yes --xpra --user=RETAIN \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --security-opt seccomp="$SCRIPT_DIR/../seccomp-electron.json" \
-  -v obsidian_config:/home/appuser/.config/obsidian \
-  -v "$HOME/files/notes":/home/appuser/workdir \
-  -v "/tmp/xdg-open-fifo":/home/appuser/xdg-open-fifo \
+  -v obsidian_config:/home/colin/.config/obsidian \
+  -v "$HOME/files/notes":/home/colin/workdir \
+  -v "/tmp/xdg-open-fifo":/home/colin/xdg-open-fifo \
   -- \
   obsidian:latest

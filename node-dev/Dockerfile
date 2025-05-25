@@ -8,7 +8,7 @@ RUN pacman -S --noconfirm --needed \
     prettier \
   && pacman -Scc --noconfirm
 
-USER dev
-WORKDIR /home/dev/project
+USER colin
+WORKDIR /home/colin/project
 
 ENTRYPOINT ["code-server", "."]

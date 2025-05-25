@@ -4,12 +4,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
   && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -g 1000 appuser
-RUN useradd -m -u 1000 -g appuser appuser
+RUN groupadd -g 1000 colin
+RUN useradd -m -u 1000 -g colin colin
 
-USER appuser
-ENV PATH "/home/appuser/.local/bin:${PATH}"
-WORKDIR /home/appuser
+USER colin
+ENV PATH "/home/colin/.local/bin:${PATH}"
+WORKDIR /home/colin
 
 COPY requirements.txt .
 RUN pip install --user --no-cache-dir --require-hashes \

@@ -6,8 +6,8 @@ docker run --rm -it \
   --cap-drop ALL --security-opt=no-new-privileges \
   --read-only \
   -u 1000:1000 \
-  -v beets:/home/appuser/.config/beets \
-  -v "$HOME/proj/dockerfiles/beet/config.yaml":/home/appuser/.config/beets/config.yaml:ro \
-  -v "$HOME/Music":/home/appuser/Music \
-  -v "$HOME/apps/beet":/home/appuser/workdir:ro \
+  -v beets:/home/colin/.config/beets \
+  -v "$HOME/proj/dockerfiles/beet/config.yaml":/home/colin/.config/beets/config.yaml:ro \
+  -v "$HOME/Music":/home/colin/Music \
+  -v "$HOME/apps/beet":/home/colin/workdir:ro \
   beet "$@"

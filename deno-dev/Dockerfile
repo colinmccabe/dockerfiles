@@ -6,8 +6,8 @@ RUN pacman -S --noconfirm --needed \
     deno \
   && pacman -Scc --noconfirm
 
-USER dev
-WORKDIR /home/dev
+USER colin
+WORKDIR /home/colin
 
 ARG EXT_VER=3.43.1
 ARG EXT_HASH=6a7442d0ead72ed0463cab9a8f1f7f36881b0c4907f46aee7fafe995ed0fca52

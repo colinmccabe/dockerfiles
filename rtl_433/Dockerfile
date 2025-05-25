@@ -6,8 +6,8 @@ RUN apt-get update &&\
   &&\
   rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -g 16980 appuser
-RUN useradd -m -u 16980 -g appuser appuser
-USER appuser
+RUN groupadd -g 16980 colin
+RUN useradd -m -u 16980 -g colin colin
+USER colin
 
 ENTRYPOINT ["rtl_433"]

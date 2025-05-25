@@ -6,7 +6,7 @@ RUN pacman -S --noconfirm \
     arduino-cli \
   && pacman -Scc --noconfirm
 
-USER dev
+USER colin
 
-RUN mkdir /home/dev/Arduino
-WORKDIR /home/dev/Arduino
+RUN mkdir /home/colin/Arduino
+WORKDIR /home/colin/Arduino

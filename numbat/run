@@ -12,5 +12,5 @@ docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
   -u "$USER_ID:$USER_ID" \
-  -v "$SCRIPT_DIR/history":'/home/appuser/.local/share/numbat/history' \
+  -v "$SCRIPT_DIR/history":'/home/colin/.local/share/numbat/history' \
   numbat "$@"

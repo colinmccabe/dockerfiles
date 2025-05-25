@@ -1,7 +1,7 @@
 FROM alpine:3.20
 
-RUN addgroup -g 1000 appuser
-RUN adduser -D -u 1000 -G appuser appuser
+RUN addgroup -g 1000 colin
+RUN adduser -D -u 1000 -G colin colin
 
 RUN mkdir numbat
 WORKDIR numbat
@@ -19,8 +19,8 @@ RUN wget $PKG_URL -O pkg.tar.gz &&\
   cd .. &&\
   rm -r numbat
 
-USER appuser
-WORKDIR /home/appuser
+USER colin
+WORKDIR /home/colin
 RUN mkdir -p .local/share/numbat/
 
 ENTRYPOINT ["numbat"]

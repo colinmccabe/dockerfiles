@@ -6,5 +6,5 @@ docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
   -u 1000:1000 \
-  -v "$HOME/apps/kid3":/home/appuser/workdir \
+  -v "$HOME/apps/kid3":/home/colin/workdir \
   kid3-cli "$@"

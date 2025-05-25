@@ -8,6 +8,6 @@ x11docker --nxagent --no-auth --user=RETAIN \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   -u 1000:1000 \
-  -v "$HOME/proj/musescore":/home/appuser/Documents/MuseScore2/Scores \
+  -v "$HOME/proj/musescore":/home/colin/Documents/MuseScore2/Scores \
   -- \
   musescore "$@"

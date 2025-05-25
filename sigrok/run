@@ -14,7 +14,7 @@ x11docker --xpra --user=RETAIN \
   --cap-drop=ALL --security-opt=no-new-privileges \
   -u 1000:1000 \
   $FX2LA \
-  -v "$HOME/apps/sigrok":/home/appuser/workdir \
+  -v "$HOME/apps/sigrok":/home/colin/workdir \
   -e QT_QUICK_BACKEND=software \
   -- \
   sigrok:latest

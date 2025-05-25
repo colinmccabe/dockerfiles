@@ -12,8 +12,8 @@ RUN curl -L $CODE_URL -o code-server.tar.gz \
   && rm code-server.tar.gz
 ENV PATH "/opt/code-server/bin:${PATH}"
 
-USER dev
-WORKDIR /home/dev
+USER colin
+WORKDIR /home/colin
 
 ENV EXT_BASE_URL=https://marketplace.visualstudio.com/_apis/public/gallery/publishers
 

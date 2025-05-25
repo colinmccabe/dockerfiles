@@ -6,8 +6,8 @@ RUN pacman -S --noconfirm --needed \
     gdb \
   && pacman -Scc --noconfirm
 
-USER dev
-WORKDIR /home/dev
+USER colin
+WORKDIR /home/colin
 
 ENV EXT_VER=1.23.0
 ENV EXT_HASH=b714dedddf35145639cddf7c349d8899fcb75f53416508352060e0674feae03c

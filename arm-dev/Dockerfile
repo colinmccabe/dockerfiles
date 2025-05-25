@@ -20,8 +20,8 @@ RUN mkdir -p /opt/jlink &&\
   tar -x --strip-components=1 -f jlink.tgz -C jlink &&\
   rm jlink.tgz
 
-USER dev
-WORKDIR /home/dev
+USER colin
+WORKDIR /home/colin
 
 ENV EXT_VER=1.12.1
 ENV EXT_HASH=8a82ba830b6468071fc67d7596aa7086ba482d27dfb7f6f2784aa812d2487ccd

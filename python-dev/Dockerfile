@@ -1,7 +1,6 @@
 FROM code-server:latest
 
 USER root
-WORKDIR /
 RUN pacman -S --noconfirm --needed \
     mypy \
     python \
@@ -10,13 +9,10 @@ RUN pacman -S --noconfirm --needed \
     uv \
   && pacman -Scc --noconfirm
 
-USER dev
-WORKDIR /home/dev
+USER colin
 
 RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-python.mypy-type-checker
 RUN code-server --install-extension charliermarsh.ruff
-
-WORKDIR project
 
 ENTRYPOINT ["code-server", "."]

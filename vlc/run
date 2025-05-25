@@ -8,6 +8,6 @@ x11docker --user=RETAIN \
   -- \
   --cap-drop=ALL --security-opt=no-new-privileges \
   -u 1000:1000 \
-  -v "$HOME/Videos":/home/appuser/Videos:ro \
+  -v "$HOME/Videos":/home/colin/Videos:ro \
   -- \
   vlc "$@"

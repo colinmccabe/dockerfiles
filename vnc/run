@@ -8,6 +8,6 @@ docker run --rm --init \
   --name="$(basename "$1")" \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --tmpfs /tmp:exec \
-  -v "$1":/home/dev/project \
+  -v "$1":/home/colin/project \
   -p 127.0.0.1:5900:5900 \
-  vnc-dev
+  vnc

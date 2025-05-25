@@ -6,8 +6,8 @@ RUN pacman -S --noconfirm --needed \
     ttf-dejavu \
   && pacman -Scc --noconfirm
 
-USER dev
-WORKDIR /home/dev
+USER colin
+WORKDIR /home/colin
 
 ENV EXT_BASE_URL=https://marketplace.visualstudio.com/_apis/public/gallery/publishers
 

@@ -19,12 +19,12 @@ docker run --rm --init \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --network=dev \
   --tmpfs /tmp:exec \
-  -v "$SCRIPT_DIR/fish_history":/home/dev/.local/share/fish/fish_history \
-  -v "$SCRIPT_DIR/javaUserPrefs":/home/dev/.java/.userPrefs \
-  -v intellij_config:/home/dev/.config/JetBrains \
-  -v intellij_cache:/home/dev/.cache/JetBrains \
-  -v intellij_share:/home/dev/.local/share/JetBrains \
-  -v "$1":/home/dev/project \
+  -v "$SCRIPT_DIR/fish_history":/home/colin/.local/share/fish/fish_history \
+  -v "$SCRIPT_DIR/javaUserPrefs":/home/colin/.java/.userPrefs \
+  -v intellij_config:/home/colin/.config/JetBrains \
+  -v intellij_cache:/home/colin/.cache/JetBrains \
+  -v intellij_share:/home/colin/.local/share/JetBrains \
+  -v "$1":/home/colin/project \
   -p 127.0.0.1:5900:5900 \
   $ICEBREAKER \
   fpga-dev

@@ -7,9 +7,9 @@ RUN pacman --noconfirm -S \
     openssl-1.1 \
   && pacman --noconfirm -Scc
 
-RUN useradd -m appuser
-USER appuser
-WORKDIR /home/appuser
+RUN useradd -m colin
+USER colin
+WORKDIR /home/colin
 
 ARG makemkv_commit=7a572bca5b4546ae19a356b7dfbb660be917462d
 RUN git clone https://aur.archlinux.org/makemkv-cli.git
@@ -21,8 +21,8 @@ RUN echo yes | makepkg -crs
 USER root
 RUN pacman --noconfirm -U makemkv*.pkg.tar.zst
 
-USER appuser
-RUN mkdir /home/appuser/workdir
-WORKDIR /home/appuser/workdir
+USER colin
+RUN mkdir /home/colin/workdir
+WORKDIR /home/colin/workdir
 
 ENTRYPOINT ["makemkvcon"]

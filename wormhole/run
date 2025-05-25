@@ -2,5 +2,5 @@
 docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only \
-  -v "$HOME/apps/wormhole":/home/appuser/workdir \
+  -v "$HOME/apps/wormhole":/home/colin/workdir \
   wormhole "$@"

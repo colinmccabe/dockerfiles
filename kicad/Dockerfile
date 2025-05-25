@@ -1,4 +1,4 @@
-FROM vnc-dev
+FROM vnc
 
 USER root
 RUN pacman -S --noconfirm \
@@ -6,7 +6,7 @@ RUN pacman -S --noconfirm \
     kicad-library \
   && pacman -Scc --noconfirm
 
-USER dev
+USER colin
 
 RUN mkdir -p .config/openbox
 COPY openbox .config/openbox

@@ -62,7 +62,7 @@ RUN curl -L $DEP_URL -o dep.tar.gz &&\
   cd .. &&\
   rm -rf dep dep.tar.gz
 
-USER dev
-WORKDIR /home/dev/project
+USER colin
+WORKDIR /home/colin/project
 
 ENTRYPOINT ["code-server", "."]

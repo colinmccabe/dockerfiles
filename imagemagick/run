@@ -8,7 +8,7 @@ docker run --rm -it \
   --cap-drop ALL --security-opt=no-new-privileges \
   --read-only --network=none \
   -u 1000:1000 \
-  -v "$HOME/apps/imagemagick":/home/appuser/workdir \
+  -v "$HOME/apps/imagemagick":/home/colin/workdir \
   --entrypoint="$COMMAND" \
   imagemagick \
   "$@"

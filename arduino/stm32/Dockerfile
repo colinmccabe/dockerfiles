@@ -1,6 +1,6 @@
 FROM arduino
 
-COPY stm32-index.json /home/dev/
+COPY stm32-index.json /home/colin/
 RUN arduino-cli \
-  --additional-urls=file:///home/dev/stm32-index.json \
+  --additional-urls=file:///home/colin/stm32-index.json \
   core install STMicroelectronics:stm32
