@@ -1,4 +1,4 @@
-FROM alpine:3.20
+FROM alpine:3.21
 
 RUN addgroup -g 1000 colin
 RUN adduser -D -u 1000 -G colin colin
