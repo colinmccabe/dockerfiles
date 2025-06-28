@@ -1,5 +1,6 @@
 FROM archlinux-colin
 
+USER root
 RUN pacman -S --noconfirm \
     ttf-dejavu \
     sigrok-cli \
@@ -7,9 +8,7 @@ RUN pacman -S --noconfirm \
     pulseview \
   && pacman -Scc --noconfirm
 
-RUN useradd -m colin
 USER colin
-RUN mkdir /home/colin/workdir
 WORKDIR /home/colin/workdir
 
 # https://bugreports.qt.io/browse/QTBUG-77922
