@@ -12,6 +12,7 @@ man-db
 man-pages
 openbsd-netcat
 python
+shellcheck
 time
 tree
 unzip
