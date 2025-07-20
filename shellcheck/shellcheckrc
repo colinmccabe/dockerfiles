@@ -1,2 +1,4 @@
 # Disable 'useless cat'
 disable=SC2002
+# Disable complaints about local variable assignment
+disable=SC2155
