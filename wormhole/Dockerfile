@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 RUN groupadd -g 1000 colin
 RUN useradd -m -u 1000 -g colin colin
