@@ -1,4 +1,4 @@
-FROM python:3.13-slim-bookworm
+FROM python:3.13-slim-trixie
 
 RUN groupadd -g 17105 colin
 RUN useradd -m -u 17105 -g colin colin
