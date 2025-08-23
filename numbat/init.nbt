@@ -1,0 +1,3 @@
+@name("US dollar")
+@aliases(dollars, USD, usd, $: short)
+unit dollar: Money
