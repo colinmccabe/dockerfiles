@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+DATA_DIR=$HOME/apps/duckdb
+mkdir -p "$DATA_DIR"
+
+HISTORY_FILE=$DATA_DIR/duckdb_history
+touch "$HISTORY_FILE"
+setfacl -m u:100999:rw "$HISTORY_FILE"
+
 docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
   --read-only --network=none \
   -u 1000:1000 \
+  -v "$HOME/apps/duckdb/duckdb_history":/home/colin/.duckdb_history \
   -v "$(pwd)":/home/colin/workdir \
   duckdb "$@"
