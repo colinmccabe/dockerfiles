@@ -6,10 +6,11 @@ PROJ_DIR=$1; shift
 
 docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
+  --read-only \
   -u 1000:1000 \
-  -v "$SCRIPT_DIR/claude.json":/home/node/.claude.json \
-  -v "$PROJ_DIR/.claude":/home/node/.claude \
+  --tmpfs /tmp \
+  -v "$PROJ_DIR/.codex":/home/node/.codex \
   -v "$PROJ_DIR":/home/node/workdir \
-  claude-code \
+  codex \
   -- \
   "$@"
