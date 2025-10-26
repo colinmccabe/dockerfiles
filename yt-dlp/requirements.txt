@@ -4,7 +4,7 @@
 #
 #    pip-compile --allow-unsafe --generate-hashes --output-file=- requirements.in
 #
-yt-dlp==2025.9.5 \
-    --hash=sha256:68a03b5c50e3d0f6af7244bd4bf491c1b12e4e2112b051cde05cdfd2647eb9a8 \
-    --hash=sha256:9ce080f80b2258e872fe8a75f4707ea2c644e697477186e20b9a04d9a9ea37cf
+yt-dlp==2025.10.22 \
+    --hash=sha256:9c803a9598859f91d0d5bd3337f1506ecb40bbe97f6efbe93bc4461fed344fb2 \
+    --hash=sha256:db2d48133222b1d9508c6de757859c24b5cefb9568cf68ccad85dac20b07f77b
     # via -r requirements.in
