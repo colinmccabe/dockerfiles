@@ -6,3 +6,4 @@ import:
 
 convert:
   never_convert_lossy_files: true
+  format: flac
