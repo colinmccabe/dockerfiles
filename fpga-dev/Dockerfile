@@ -17,7 +17,7 @@ RUN curl -L $OSS_URL -o oss-cad-suite.tar.gz &&\
   echo "$OSS_HASH  oss-cad-suite.tar.gz" | sha256sum -c - &&\
   tar -xf oss-cad-suite.tar.gz &&\
   rm oss-cad-suite.tar.gz
-ENV PATH "/opt/oss-cad-suite/bin:${PATH}"
+ENV PATH="/opt/oss-cad-suite/bin:${PATH}"
 
 USER colin
 WORKDIR /home/colin

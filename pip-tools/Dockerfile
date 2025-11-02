@@ -4,7 +4,7 @@ RUN groupadd -g 1000 colin
 RUN useradd -m -u 1000 -g colin colin
 
 USER colin
-ENV PATH "/home/colin/.local/bin:${PATH}"
+ENV PATH="/home/colin/.local/bin:${PATH}"
 WORKDIR /home/colin
 
 COPY requirements.txt .
