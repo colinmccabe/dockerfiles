@@ -4,6 +4,7 @@
 
 dotfiles.git/
 fish_history
+node_modules/
 
 *.tar.gz
 *.tgz
