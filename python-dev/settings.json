@@ -1,4 +1,5 @@
 {
+    "chat.tools.terminal.autoReplyToPrompts": true,
     "editor.minimap.enabled": false,
     "editor.tabSize": 2,
     "extensions.autoCheckUpdates": false,
@@ -9,6 +10,9 @@
       "W",
       "F",
       "I"
+    ],
+    "ruff.lint.ignore": [
+      "E741"
     ],
     "terminal.integrated.defaultProfile.linux": "fish",
     "update.mode": "none",
