@@ -2,7 +2,11 @@
 set -eu
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
-echo "$SCRIPT_DIR/auth.json"
+
+if [ ! -d .codex ]; then
+  mkdir -p .codex
+  setfacl -m u:100999:rwx,d:u:colin:rwX,d:u:100999:rwX .codex
+fi
 
 docker run --rm -it \
   --cap-drop=ALL --security-opt=no-new-privileges \
