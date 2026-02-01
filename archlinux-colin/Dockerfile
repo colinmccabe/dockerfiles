@@ -1,6 +1,6 @@
-FROM archlinux:base-devel-20251228.0.475343
+FROM archlinux:base-devel-20260125.0.484595
 
-RUN echo 'Server=https://archive.archlinux.org/repos/2026/01/01/$repo/os/$arch' \
+RUN echo 'Server=https://archive.archlinux.org/repos/2026/02/01/$repo/os/$arch' \
   > /etc/pacman.d/mirrorlist
 
 RUN pacman --noconfirm -Syu &&\
