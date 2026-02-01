@@ -1,0 +1,4 @@
+{
+  "apiKeyHelper": "cat $HOME/api-key",
+  "model": "opus"
+}
