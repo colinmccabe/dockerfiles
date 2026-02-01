@@ -4,7 +4,7 @@
 #
 #    pip-compile --generate-hashes --output-file=- requirements.in
 #
-yt-dlp==2025.12.8 \
-    --hash=sha256:36e2584342e409cfbfa0b5e61448a1c5189e345cf4564294456ee509e7d3e065 \
-    --hash=sha256:b773c81bb6b71cb2c111cfb859f453c7a71cf2ef44eff234ff155877184c3e4f
+yt-dlp==2026.1.29 \
+    --hash=sha256:08d0a25aead160c4787cbd0d2e82a269c75c8dbcfbfa729ce45ad52a8375fa1d \
+    --hash=sha256:12b489eb16828cc3fff1723f244992ebae8a5bf1ad75c8e9f01d729ae237ebb9
     # via -r requirements.in
