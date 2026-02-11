@@ -14,8 +14,7 @@ docker run --rm -it \
   -u 1000:1000 \
   --tmpfs /tmp \
   -v "$(pwd)"/.codex:/home/node/.codex \
-  -v "$SCRIPT_DIR/auth.json":/home/node/.codex/auth.json:ro \
+  -v "$SCRIPT_DIR/auth.json":/home/node/.codex/auth.json \
   -v "$(pwd)":/home/node/workdir \
   codex \
-  -- \
   "$@"
