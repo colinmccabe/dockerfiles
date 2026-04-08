@@ -1,4 +1,4 @@
-FROM python:3.13-slim-trixie
+FROM python:3.14-slim-trixie
 
 # python-kasa needs PST8PDT but this was removed from tzdata in trixie
 RUN ln -sf /usr/share/zoneinfo/America/Los_Angeles \

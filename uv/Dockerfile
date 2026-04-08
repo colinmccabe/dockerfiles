@@ -1,16 +1,8 @@
 FROM python:3.14-slim-trixie
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    git \
-    gcc-arm-none-eabi \
-    binutils-arm-none-eabi \
-    dfu-programmer \
-    dfu-util \
-  && rm -rf /var/lib/apt/lists/*
-
 RUN groupadd -g 1000 colin
 RUN useradd -m -u 1000 -g colin colin
+
 USER colin
 ENV PATH="/home/colin/.local/bin:${PATH}"
 WORKDIR /home/colin
@@ -20,7 +12,9 @@ RUN pip install --user --no-cache-dir --require-hashes \
   -r requirements.txt
 RUN rm requirements.txt
 
+COPY uv.toml .config/uv/uv.toml
+
 RUN mkdir workdir
 WORKDIR workdir
 
-ENTRYPOINT ["bash"]
+ENTRYPOINT ["uv"]

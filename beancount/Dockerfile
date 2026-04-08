@@ -1,10 +1,10 @@
-FROM python:3.13-slim-trixie
+FROM python:3.14-slim-trixie
 
 RUN groupadd -g 1000 colin
 RUN useradd -m -u 1000 -g colin colin
 
 RUN chown -R colin:colin /usr/local
-ENV BUILD_DEPS="build-essential"
+ENV BUILD_DEPS="build-essential bison flex"
 COPY requirements.txt /
 RUN apt-get update &&\
   apt-get -y install --no-install-recommends $BUILD_DEPS &&\

@@ -1,5 +1,5 @@
 library: ~/Music/library.db
-plugins: convert
+plugins: convert musicbrainz
 
 import:
   timid: true

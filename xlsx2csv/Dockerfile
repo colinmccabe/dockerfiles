@@ -1,4 +1,4 @@
-FROM python:3.13-slim-trixie
+FROM python:3.14-slim-trixie
 
 RUN groupadd -g 19476 colin
 RUN useradd -m -u 19476 -g colin colin
