@@ -1,15 +1,11 @@
-FROM debian:trixie-slim
+FROM vnc
 
-RUN groupadd -g 1000 colin
-RUN useradd -m -u 1000 -g colin colin
-
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
+USER root
+RUN pacman -S --noconfirm \
     freecad \
-  && rm -rf /var/lib/apt/lists/*
+  && pacman -Scc --noconfirm
 
 USER colin
-RUN mkdir /home/colin/workdir
-WORKDIR /home/colin/workdir
 
-ENTRYPOINT ["freecad"]
+RUN mkdir -p .config/openbox
+COPY openbox .config/openbox
