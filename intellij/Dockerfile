@@ -8,7 +8,7 @@ RUN pacman -S --noconfirm --needed \
     libxtst \
     maven \
     ttf-dejavu \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 ARG INTELLIJ_TAR=ideaIC-2024.1.4.tar.gz
 ARG INTELLIJ_HASH=7d5e4cdb5a7cb1c376ca66957481350571561edadc3f45e6fce422e14af0fc16

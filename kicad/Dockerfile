@@ -4,7 +4,8 @@ USER root
 RUN pacman -S --noconfirm \
     kicad \
     kicad-library \
-  && pacman -Scc --noconfirm
+    kicad-library-3d \
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 

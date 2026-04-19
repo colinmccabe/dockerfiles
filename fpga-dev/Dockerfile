@@ -6,7 +6,7 @@ RUN pacman -S --noconfirm --needed \
     riscv32-elf-binutils \
     riscv64-elf-gcc \
     sbt \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 WORKDIR /opt
 ARG OSS_VER=2023-11-12

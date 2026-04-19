@@ -3,7 +3,7 @@ FROM arduino
 USER root
 RUN pacman -S --noconfirm --needed \
     python-pipx \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 WORKDIR /home/colin

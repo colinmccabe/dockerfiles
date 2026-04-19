@@ -9,7 +9,7 @@ RUN pacman -S --noconfirm \
     ttf-dejavu \
     xorg-xrandr \
     xterm \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 RUN echo ':0=dev' >> /etc/tigervnc/vncserver.users
 

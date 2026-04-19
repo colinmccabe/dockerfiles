@@ -6,7 +6,7 @@ RUN pacman -S --noconfirm \
     arduino-builder \
     arduino-cli \
     python-pyserial \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 WORKDIR /home/colin

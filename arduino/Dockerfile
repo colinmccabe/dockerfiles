@@ -4,7 +4,7 @@ USER root
 WORKDIR /
 RUN pacman -S --noconfirm \
     arduino-cli \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 

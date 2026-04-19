@@ -7,7 +7,7 @@ RUN pacman -S --noconfirm --needed \
     python-ruff \
     python-pip \
     uv \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 

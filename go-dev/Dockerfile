@@ -6,7 +6,7 @@ RUN pacman -S --noconfirm --needed \
     delve \
     go \
     gopls \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 WORKDIR /home/colin

@@ -3,7 +3,7 @@ FROM archlinux-colin
 USER root
 COPY packages .
 RUN pacman -S --noconfirm --needed - < packages \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 

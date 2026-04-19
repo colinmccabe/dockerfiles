@@ -4,7 +4,7 @@ USER root
 WORKDIR /
 RUN pacman -S --noconfirm --needed \
     gdb \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 WORKDIR /home/colin

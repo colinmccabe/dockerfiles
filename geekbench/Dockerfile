@@ -2,7 +2,7 @@ FROM archlinux-colin
 
 RUN pacman -S --noconfirm --needed \
     git \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 RUN groupadd -g 17105 colin
 RUN useradd -m -u 17105 -g colin colin

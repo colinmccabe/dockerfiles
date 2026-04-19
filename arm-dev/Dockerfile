@@ -7,7 +7,7 @@ RUN pacman -S --noconfirm \
     arm-none-eabi-gdb \
     arm-none-eabi-newlib \
     openocd \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 WORKDIR /opt
 RUN mkdir jlink

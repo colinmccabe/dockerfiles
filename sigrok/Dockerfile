@@ -6,7 +6,7 @@ RUN pacman -S --noconfirm \
     sigrok-cli \
     sigrok-firmware-fx2lafw \
     pulseview \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 WORKDIR /home/colin/workdir

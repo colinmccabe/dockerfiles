@@ -3,7 +3,7 @@ FROM archlinux-colin
 USER root
 RUN pacman -S --noconfirm \
     obsidian \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 COPY xdg-open-client /usr/local/bin/xdg-open
 

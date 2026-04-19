@@ -4,7 +4,7 @@ USER root
 RUN pacman -S --noconfirm --needed \
     code \
     ttf-dejavu \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
 WORKDIR /home/colin
