@@ -17,4 +17,5 @@ docker run --rm -it \
   -v "$SCRIPT_DIR/auth.json":/home/node/.codex/auth.json \
   -v "$(pwd)":/home/node/workdir \
   codex \
+  --sandbox danger-full-access \
   "$@"

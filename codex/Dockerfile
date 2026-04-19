@@ -2,6 +2,7 @@ FROM node:24-trixie-slim
 
 RUN apt-get update && apt-get -y install --no-install-recommends \
     ca-certificates \
+    ripgrep \
   && rm -rf /var/lib/apt/lists/*
 
 USER node
