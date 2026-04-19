@@ -1,4 +1,4 @@
-FROM archlinux-colin
+FROM archlinux-dev
 
 USER root
 RUN pacman -S --noconfirm \
@@ -14,6 +14,7 @@ RUN pacman -S --noconfirm \
 RUN echo ':0=dev' >> /etc/tigervnc/vncserver.users
 
 USER colin
+WORKDIR /home/colin
 
 RUN mkdir .vnc
 
