@@ -39,7 +39,7 @@ docker run --rm --init \
   $SERIAL_DEVICE \
   $DEBUG_DEVICE \
   --tmpfs /tmp:exec \
-  --tmpfs /home/colin/.cache:exec,uid=1000,gid=1000 \
+  --tmpfs /home/colin/.cache:exec \
   -v "$SCRIPT_DIR/settings.json":"$CONTAINER_HOME/.local/share/code-server/User/settings.json" \
   -v "$SCRIPT_DIR/fish_history":"$CONTAINER_HOME/.local/share/fish/fish_history" \
   -v "$PROJ_DIR":/home/colin/Arduino \
