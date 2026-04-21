@@ -1,0 +1,9 @@
+[Unit]
+Description=xdg-open-server link opener
+Requires=xdg-open-server.socket
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'while IFS= read -r line; do xdg-open "$line"; done'
+StandardInput=socket
+Restart=no

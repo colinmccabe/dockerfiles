@@ -1,4 +1,4 @@
-FROM archlinux-dev:latest
+FROM vnc
 
 USER root
 RUN pacman -S --noconfirm --needed \
@@ -9,10 +9,10 @@ RUN pacman -S --noconfirm --needed \
 USER colin
 WORKDIR /home/colin
 
-ENV EXT_BASE_URL=https://marketplace.visualstudio.com/_apis/public/gallery/publishers
-
 RUN mkdir -p '.config/Code - OSS/User'
+COPY ["settings.json", ".config/Code - OSS/User/"]
+
+RUN mkdir -p .config/openbox
+COPY openbox .config/openbox
 
 WORKDIR project
-
-ENTRYPOINT ["code", "-w", "."]

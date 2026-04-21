@@ -1,18 +1,18 @@
 #!/bin/sh
+
 set -eu
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
 $SCRIPT_DIR/xdg-open-server &
 
-x11docker --xc=yes --xpra --user=RETAIN \
+docker run --rm --init \
   --name=obsidian \
-  --clipboard \
-  -- \
-  --cap-drop=ALL --security-opt=no-new-privileges \
+  --cap-drop=ALL \
   --security-opt seccomp="$SCRIPT_DIR/../seccomp-electron.json" \
-  -v obsidian_config:/home/colin/.config/obsidian \
-  -v "$HOME/files/notes":/home/colin/workdir \
+  --tmpfs /tmp:exec \
+  -p 127.0.0.1:5900:5900 \
   -v "/tmp/xdg-open-fifo":/home/colin/xdg-open-fifo \
-  -- \
-  obsidian:latest
+  -v obsidian:/home/colin/.config/obsidian \
+  -v "$HOME/files/notes":/home/colin/workdir \
+  obsidian

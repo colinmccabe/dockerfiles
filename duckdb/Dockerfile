@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 USER root
 WORKDIR /usr/local/bin
-ARG PKG_VER=1.3.2
-ARG PKG_HASH=682ff48f988cb6f054fe42e755b7037ade3441e7a406cce3180b05ac0287279d
+ARG PKG_VER=1.4.2
+ARG PKG_HASH=fae3ba93eedf20b08bca4b23aeac1ba94c446f1c10d029c193e2fc4b4e0bc1bc
 ARG PKG_URL=https://github.com/duckdb/duckdb/releases/download/v$PKG_VER/duckdb_cli-linux-amd64.zip
 RUN curl -L -o pkg.zip $PKG_URL &&\
   echo "$PKG_HASH  pkg.zip" | sha256sum -c - &&\

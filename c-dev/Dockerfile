@@ -9,8 +9,8 @@ RUN pacman -S --noconfirm --needed \
 USER colin
 WORKDIR /home/colin
 
-ENV EXT_VER=1.23.0
-ENV EXT_HASH=b714dedddf35145639cddf7c349d8899fcb75f53416508352060e0674feae03c
+ENV EXT_VER=1.23.6
+ENV EXT_HASH=7118bf753a6ee21c770f98c80da56f940ec43d04593ffe32d4415aee2c8b1b5b
 ENV EXT_VENDOR=ms-vscode
 ENV EXT_NAME=cpptools
 #RUN curl -L --compressed -o ext.vsix \

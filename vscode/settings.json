@@ -1,10 +1,16 @@
 {
-    "editor.minimap.enabled": false,
-    "editor.tabSize": 2,
-    "extensions.autoCheckUpdates": false,
-    "extensions.autoUpdate": false,
-    "terminal.integrated.defaultProfile.linux": "fish",
-    "update.mode": "none",
-    "workbench.colorTheme": "Default Dark+",
-    "workbench.tree.indent": 20
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": false,
+  "terminal.integrated.profiles.linux": {
+    "fish": {
+      "path": "/usr/bin/fish"
+    }
+  },
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "update.mode": "none",
+  "window.autoDetectColorScheme": false,
+  "workbench.colorTheme": "Dark+",
+  "workbench.tree.indent": 20
 }

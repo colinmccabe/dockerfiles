@@ -1,0 +1,10 @@
+[Unit]
+Description=xdg-open-server socket
+
+[Socket]
+ListenFIFO=/tmp/xdg-open-fifo
+ExecStartPost=/bin/chmod 666 /tmp/xdg-open-fifo
+RemoveOnStop=yes
+
+[Install]
+WantedBy=sockets.target

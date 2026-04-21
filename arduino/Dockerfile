@@ -7,6 +7,9 @@ RUN pacman -S --noconfirm \
   && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 USER colin
+WORKDIR /home/colin
+
+RUN mkdir .cache
 
 RUN mkdir /home/colin/Arduino
 WORKDIR /home/colin/Arduino
