@@ -17,6 +17,7 @@ fi
 docker run --rm --init \
   --name="$(basename "$1")" \
   --cap-drop=ALL --security-opt=no-new-privileges \
+  --shm-size '1gb' \
   --network=dev \
   --tmpfs /tmp:exec \
   -v "$SCRIPT_DIR/fish_history":/home/colin/.local/share/fish/fish_history \

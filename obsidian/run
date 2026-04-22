@@ -10,6 +10,7 @@ docker run --rm --init \
   --name=obsidian \
   --cap-drop=ALL \
   --security-opt seccomp="$SCRIPT_DIR/../seccomp-electron.json" \
+  --shm-size '1gb' \
   --tmpfs /tmp:exec \
   -p 127.0.0.1:5900:5900 \
   -v "/tmp/xdg-open-fifo":/home/colin/xdg-open-fifo \

@@ -35,6 +35,7 @@ echo "code-server listening on port $PORT"
 docker run --rm --init \
   --name="$PROJ_NAME" \
   --cap-drop=ALL --security-opt=no-new-privileges \
+  --shm-size '1gb' \
   -p 127.0.0.1:$PORT:8080 \
   $SERIAL_DEVICE \
   $DEBUG_DEVICE \

@@ -13,7 +13,8 @@ echo "Listening on host port $PORT"
 
 docker run --rm --init \
   --name="$PROJ_NAME" \
-  --cap-drop ALL --security-opt=no-new-privileges \
+  --cap-drop=ALL --security-opt=no-new-privileges \
+  --shm-size '1gb' \
   --network=dev \
   -p 127.0.0.1:$PORT:8080 \
   --tmpfs /tmp:exec \
