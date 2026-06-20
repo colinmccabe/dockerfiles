@@ -1,4 +1,3 @@
-aiodiscover==2.7.1
 bleak-esphome==3.6.0
 homeassistant
 pymicro-vad==1.0.1
