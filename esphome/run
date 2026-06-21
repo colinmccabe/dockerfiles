@@ -14,5 +14,6 @@ docker run --rm -it \
   -u 1000:1000 \
   $SERIAL_DEVICE \
   -v "$(pwd)":/config \
-  ghcr.io/esphome/esphome:stable \
+  --entrypoint=esphome \
+  ghcr.io/esphome/esphome:2026.5.3 \
   "$@"
