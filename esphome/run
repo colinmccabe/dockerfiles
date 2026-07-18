@@ -3,7 +3,9 @@
 set -euo pipefail
 
 SERIAL_DEVICE=
-if [ -c /dev/ttyUSB0 ]; then
+if [ -c /dev/ttyACM0 ]; then
+  SERIAL_DEVICE=--device=/dev/ttyACM0
+elif [ -c /dev/ttyUSB0 ]; then
   SERIAL_DEVICE=--device=/dev/ttyUSB0
 fi
 
