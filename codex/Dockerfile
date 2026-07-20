@@ -1,4 +1,4 @@
-FROM node:24-trixie-slim
+FROM node:26-trixie-slim
 
 RUN apt-get update && apt-get -y install --no-install-recommends \
     ca-certificates \
