@@ -1,4 +1,4 @@
-bleak-esphome==3.6.0
+bleak-esphome==3.9.7
 homeassistant
 pymicro-vad==1.0.1
 pyspeex-noise==1.0.2

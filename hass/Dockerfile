@@ -1,4 +1,4 @@
-FROM python:3.14.5-slim-trixie
+FROM python:3.14-slim-trixie
 
 RUN groupadd -g 1944 colin
 RUN useradd -m -u 1944 -g colin colin
@@ -17,5 +17,8 @@ RUN apt-get update &&\
 USER colin
 WORKDIR /home/colin
 RUN mkdir .homeassistant
+
+# Workaround for libstdc++ link error for pymicro-vad
+ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
 
 ENTRYPOINT ["hass"]
