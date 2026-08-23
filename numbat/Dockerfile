@@ -1,21 +1,20 @@
-FROM alpine:3.23
+FROM debian:trixie-slim
 
-RUN addgroup -g 1000 colin
-RUN adduser -D -u 1000 -G colin colin
+RUN groupadd -g 1000 colin
+RUN useradd -m -u 1000 -g colin colin
 
 WORKDIR /opt
 
-ARG PKG_VER=1.16.0
-ARG PKG_HASH=620dbac00df3c8df4f42fd816ac4b28153b1269873d87a981d6f67f4de50698b
-ARG PKG_URL=https://github.com/sharkdp/numbat/releases/download/v$PKG_VER/numbat-v${PKG_VER}-i686-unknown-linux-musl.tar.gz
+ARG PKG_VER=1.23.0
+ARG PKG_HASH=e31ba03eefbb8232e15dc7c0204df5e2158021d70cc94e3bc1e429e0b7d4b15a
+ARG PKG_URL=https://github.com/sharkdp/numbat/releases/download/v$PKG_VER/numbat-v${PKG_VER}-x86_64-unknown-linux-gnu.tar.gz
+ADD --checksum=sha256:$PKG_HASH \
+  $PKG_URL \
+  pkg.tar.gz
 RUN <<EOF
-wget $PKG_URL -O pkg.tar.gz
-echo "$PKG_HASH  pkg.tar.gz" | sha256sum -c -
 tar -xf pkg.tar.gz --strip-components=1
 chmod +x numbat
 mv numbat /usr/local/bin
-mkdir -p /usr/share/numbat
-mv modules /usr/share/numbat/
 rm -rf *
 EOF
 
