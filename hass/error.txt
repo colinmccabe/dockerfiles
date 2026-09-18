@@ -1,0 +1,50 @@
+hass  | 2026-08-05 00:33:41.776 ERROR (MainThread) [homeassistant.setup] Setup failed for 'mobile_app': Unable to import component: /usr/local/lib/python3.14/site-packages/micro_vad_cpp.cpython-314-x86_64-linux-gnu.so: undefined symbol: _ZTVN10__cxxabiv117__class_type_infoE
+hass  | Traceback (most recent call last):
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/loader.py", line 1031, in async_get_component
+hass  |     comp = await self.hass.async_add_import_executor_job(
+hass  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+hass  |         self._get_component, True
+hass  |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+hass  |     )
+hass  |     ^
+hass  |   File "/usr/local/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+hass  |     result = ctx.run(self.task)
+hass  |   File "/usr/local/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+hass  |     return fn(*args, **kwargs)
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/loader.py", line 1091, in _get_component
+hass  |     ComponentProtocol, importlib.import_module(self.pkg_path)
+hass  |                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/util/loop.py", line 201, in protected_loop_func
+hass  |     return func(*args, **kwargs)
+hass  |   File "/usr/local/lib/python3.14/importlib/__init__.py", line 88, in import_module
+hass  |     return _bootstrap._gcd_import(name[level:], package, level)
+hass  |            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+hass  |   File "<frozen importlib._bootstrap>", line 1406, in _gcd_import
+hass  |   File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+hass  |   File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+hass  |   File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+hass  |   File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+hass  |   File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/components/mobile_app/__init__.py", line 9, in <module>
+hass  |     from homeassistant.components import cloud, intent, notify as hass_notify
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/components/cloud/__init__.py", line 43, in <module>
+hass  |     from . import (
+hass  |     ...<3 lines>...
+hass  |     )
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/components/cloud/http_api.py", line 46, in <module>
+hass  |     from .assist_pipeline import async_create_cloud_pipeline
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/components/cloud/assist_pipeline.py", line 6, in <module>
+hass  |     from homeassistant.components.assist_pipeline import (
+hass  |     ...<4 lines>...
+hass  |     )
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/components/assist_pipeline/__init__.py", line 26, in <module>
+hass  |     from .pipeline import (
+hass  |     ...<14 lines>...
+hass  |     )
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/components/assist_pipeline/pipeline.py", line 56, in <module>
+hass  |     from .audio_enhancer import AudioEnhancer, EnhancedAudioChunk, MicroVadSpeexEnhancer
+hass  |   File "/usr/local/lib/python3.14/site-packages/homeassistant/components/assist_pipeline/audio_enhancer.py", line 8, in <module>
+hass  |     from pymicro_vad import MicroVad
+hass  |   File "/usr/local/lib/python3.14/site-packages/pymicro_vad/__init__.py", line 3, in <module>
+hass  |     from micro_vad_cpp import MicroVad
+hass  | ImportError: /usr/local/lib/python3.14/site-packages/micro_vad_cpp.cpython-314-x86_64-linux-gnu.so: undefined symbol: _ZTVN10__cxxabiv117__class_type_infoE
