@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+
+echo 'Listening on port 3001'
+
+docker run --rm \
+  --name orca-slicer \
+  --security-opt no-new-privileges \
+  --cap-drop ALL \
+  --cap-add CAP_CHOWN \
+  --cap-add CAP_DAC_OVERRIDE \
+  --cap-add CAP_FOWNER \
+  --cap-add CAP_SETGID \
+  --cap-add CAP_SETUID \
+  --shm-size=1g \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=America/New_York \
+  -e PIXELFLUX_WAYLAND=false \
+  -v "$HOME/apps/orca-slicer":/config \
+  -p 127.0.0.1:3001:3001 \
+  lscr.io/linuxserver/orcaslicer:latest
