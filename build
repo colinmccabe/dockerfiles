@@ -10,12 +10,21 @@ end
 
 for line in (cat images commands)
   set image (string split ' ' $line)[1]
+  echo
   echo "Building $image"
+
   pushd $image
-  if [ -e Dockerfile ]
-    docker build -t $image .
+
+  if [ -f Dockerfile ]
+    set -e build_arg_file
+    if [ -f env.build ]
+      set build_arg_file "--build-arg-file=env.build"
+    end
+
+    docker build $build_arg_file -t $image .
     if [ $status -ne 0 ]; exit; end
   end
+
   popd
 end
 
