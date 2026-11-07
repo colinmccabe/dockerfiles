@@ -1,13 +1,15 @@
-FROM node:26-trixie-slim
+FROM archlinux-dev
 
-USER node
-WORKDIR /home/node
+USER colin
+WORKDIR /home/colin
 COPY package* ./
 RUN npm ci
 
 RUN mkdir .claude
 
+RUN node node_modules/@anthropic-ai/claude-code/install.cjs
+
 RUN mkdir -p workdir
 WORKDIR workdir
 
-ENTRYPOINT ["/home/node/node_modules/.bin/claude"]
+ENTRYPOINT ["/home/colin/node_modules/.bin/claude"]

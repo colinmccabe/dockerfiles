@@ -1,17 +1,11 @@
-FROM node:26-trixie-slim
+FROM archlinux-dev
 
-RUN apt-get update && apt-get -y install --no-install-recommends \
-    ca-certificates \
-    procps \
-    ripgrep \
-  && rm -rf /var/lib/apt/lists/*
-
-USER node
-WORKDIR /home/node
+USER colin
+WORKDIR /home/colin
 COPY package* ./
 RUN npm ci
 
 RUN mkdir -p workdir
 WORKDIR workdir
 
-ENTRYPOINT ["/home/node/node_modules/.bin/codex"]
+ENTRYPOINT ["/home/colin/node_modules/.bin/codex"]

@@ -20,11 +20,11 @@ docker run --rm -it \
   --read-only \
   -u 1000:1000 \
   --tmpfs /tmp \
-  -v "$SCRIPT_DIR/api-key":/home/node/api-key:ro \
-  -v "$(pwd)"/.claude:/home/node/.claude \
-  -v "$SCRIPT_DIR/settings.json":/home/node/.claude/settings.json:ro \
-  -v "$(pwd)"/.claude.json:/home/node/.claude.json \
-  -v "$(pwd)":/home/node/workdir \
+  -v "$SCRIPT_DIR/api-key":/home/colin/api-key:ro \
+  -v "$(pwd)"/.claude:/home/colin/.claude \
+  -v "$SCRIPT_DIR/settings.json":/home/colin/.claude/settings.json:ro \
+  -v "$(pwd)"/.claude.json:/home/colin/.claude.json \
+  -v "$(pwd)":/home/colin/workdir \
   claude-code \
   -- \
   "$@"
